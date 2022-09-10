@@ -20,4 +20,3 @@ This `CodeNote` is a notebook mainly record the knowledge, problem and solution 
 [Hui Zhou](https://github.com/Rasic2), [DongZhi Li](https://github.com/kealdoom), [XianYang Zhang](https://github.com/mastreina)
 
 Copyright © 2022 `Hui Zhou` All rights reserved.
-

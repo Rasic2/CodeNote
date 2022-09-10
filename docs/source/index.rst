@@ -1,20 +1,14 @@
-.. CodeNote documentation master file, created by
-   sphinx-quickstart on Sat Sep 10 12:10:12 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to CodeNote's documentation!
 ====================================
 
+The :program:`CodeNote` is a notebook mainly record the knowledge, problem and solution in code development, and will keep update in the future.
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   git.md
+   sphinx.md
+   codecov.md
+   package.rst
+   tricks.md 

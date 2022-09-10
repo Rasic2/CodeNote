@@ -8,7 +8,7 @@
 
 ## About CodeNote
 
-This `CodeNote` is a notebook mainly record the knowledge, problem and solution in code development, and will keep update in the future.
+This `CodeNote` is a notebook mainly record the knowledge, problem and solution in code development, and will keep update in the future. Online documentation can see [here])(https://codenote.readthedocs.io/en/latest/index.html).
 
 ## Docs Content
 

@@ -7,8 +7,10 @@ The :program:`CodeNote` is a notebook mainly record the knowledge, problem and s
    :maxdepth: 2
    :caption: Contents
 
+   mirror.rst
    git.md
    sphinx.md
    codecov.md
    package.rst
+   migration.rst
    tricks.md 

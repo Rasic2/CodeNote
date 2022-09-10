@@ -8,12 +8,17 @@
 
 ## About CodeNote
 
-This `CodeNote` is a notebook mainly record the knowledge, problem and solution in code development, and will keep update in the future. Online documentation can see [here])(https://codenote.readthedocs.io/en/latest/index.html).
+This `CodeNote` is a notebook mainly record the knowledge, problem and solution in code development, and will keep update in the future. Online documentation can see [here](https://codenote.readthedocs.io/en/latest/index.html).
 
 ## Docs Content
 
-- git-related
-- sphinx-related
+- Mirror Modify
+- Git Tutorial
+- Sphinx Tutorial
+- Codecov Tutorial
+- Package Production
+- Environment Migration
+- Tricks Collection
 
 ## Contributor
 

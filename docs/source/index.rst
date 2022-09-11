@@ -1,11 +1,11 @@
-Welcome to CodeNote's documentation!
+欢迎来到 CodeNote 的文档!
 ====================================
 
-The :program:`CodeNote` is a notebook mainly record the knowledge, problem and solution in code development, and will keep update in the future.
+:program:`CodeNote` 主要用来记录程序开发相关的知识、问题以及解决方案，未来会持续更新。
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents
+   :caption: 目录
 
    mirror.rst
    git.md
@@ -13,4 +13,5 @@ The :program:`CodeNote` is a notebook mainly record the knowledge, problem and s
    codecov.md
    package.rst
    migration.rst
+   wsl.md
    tricks.md 

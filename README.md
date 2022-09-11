@@ -1,5 +1,8 @@
 # CodeNote
 
+![GitHub](https://img.shields.io/github/license/Rasic2/CodeNote)
+[![Documentation Status](https://readthedocs.org/projects/codenote/badge/?version=latest)](https://codenote.readthedocs.io/en/latest/?badge=latest)
+
 ## Table of contents
 
 - [About CodeNote](#about-codenote)

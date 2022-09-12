@@ -207,7 +207,18 @@ Install package can do this:
 
 .. code-block:: bash
 
-    conda install -c hui_zhou -c conda-forge qvasp
+    conda install -c hui_zhou -c conda-forge gvasp
 
 .. attention::
     When install the package, noticed that we used the compilers in **conda-forge** channel, so we particularly add this channel to install the package, otherwise conflicts will occur.
+
+包安装
+======
+
+- 使用 conda 安装包
+
+.. code-block:: bash
+
+    conda install package
+
+重新安装同版本的包时，加入参数 :code:`--force-reinstall` 

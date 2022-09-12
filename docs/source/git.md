@@ -94,7 +94,7 @@ git filter-repo --analyze
 
 首次运行该命令会生成 `.git/filter-repo` 目录，可查看该目录获取文件的大小和历史名字，如 `.git/filter-repo/analysis/path-all-sizes.txt`：
 
-```txt
+```text
 === All paths by reverse accumulated size ===
 Format: unpacked size, packed size, date deleted, path name
        35149      12121 <present>  LICENSE

@@ -14,7 +14,7 @@ wsl --shutdown
 
 2. 将需要迁移的分发或虚拟机导出（如 Ubuntu-22.04）
 
-```bash
+```
 wsl --export Ubuntu-22.04 D:\wsl-Ubuntu-22.04
 ```
 
@@ -28,7 +28,7 @@ wsl --unregister Ubuntu-22.04
 
 4. 导入新的分发版或虚拟机
 
-```bash
+```
 wsl --import Ubuntu-22.04 D:\wsl\Ubuntu2004 D:\wsl-Ubuntu-22.04 --version 2
 ```
 

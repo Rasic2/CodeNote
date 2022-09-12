@@ -21,6 +21,7 @@ This `CodeNote` is a notebook mainly record the knowledge, problem and solution 
 - Codecov Tutorial
 - Package Production
 - Environment Migration
+- WSL Tutorial
 - Tricks Collection
 
 ## Contributor

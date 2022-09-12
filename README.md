@@ -20,8 +20,10 @@ This `CodeNote` is a notebook mainly record the knowledge, problem and solution 
 - Sphinx Tutorial
 - Codecov Tutorial
 - Package Production
+- Package Install
 - Environment Migration
 - WSL Tutorial
+- Docker Tutorial
 - Tricks Collection
 
 ## Contributor

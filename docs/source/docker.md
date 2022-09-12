@@ -4,4 +4,54 @@
 
 ## Docker 常用命令
 
+- 从镜像仓库中拉取镜像（IMAGE）
+
+```bash
+docker pull IMAGE
+```
+
+- 以某个镜像（IMAGE）启动一个容器，并在容器内执行 bash 命令
+
+```bash
+docker run -it IMAGE "/bin/bash"
+```
+
+- 列出运行中的容器
+
+```bash
+docker ps
+```
+
+加上`-a` 参数列出所有容器（包括未运行的）
+
+- 启动一个容器
+
+```bash
+docker start container_id
+```
+
+- 进入一个容器
+
+```bash
+docker attach container_id
+```
+
+- 复制本地文件到镜像
+
+```
+docker cp local_path container_id:docker_path
+```
+
+- 复制镜像文件到本地
+
+```
+docker cp container_id:docker_path local_path
+```
+
 - 退出 docker 终端（快捷键`Ctrl+P+Q`）
+
+- 终止一个容器
+
+```bash
+docker stop container_id
+```

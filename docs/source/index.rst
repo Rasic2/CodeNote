@@ -14,4 +14,5 @@
    package.rst
    migration.rst
    wsl.md
+   docker.md
    tricks.md 

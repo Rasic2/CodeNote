@@ -4,6 +4,8 @@
 
 ## Git 常用命令
 
+### 初始化及配置
+
 - 初始化 git 本地仓库
 
 ```bash
@@ -15,6 +17,16 @@ git init
 ```bash
 git config -l
 ```
+
+- 给远程仓库地址添加别名
+
+```bash
+git remote add origin git@github.com:Rasic2/gvasp.git
+```
+
+其中 `origin` 代表给远程仓库添加的别名, `git@github*` 代表远程仓库的地址。
+
+### 提交相关
 
 - 显示工作目录和暂存区的状态
 
@@ -41,14 +53,6 @@ git commit -m "comment"
 ```bash
 git log
 ```
-
-- 给远程仓库地址添加别名
-
-```bash
-git remote add origin git@github.com:Rasic2/gvasp.git
-```
-
-其中 `origin` 代表给远程仓库添加的别名, `git@github*` 代表远程仓库的地址。
 
 - 将本地仓库的内容同步到远程
 
@@ -80,6 +84,32 @@ git stash list
 
 ```bash
 git stash pop
+```
+
+### tag 相关
+
+- 查看已有的 tag
+
+```bash
+git tag
+```
+
+- 为当前 commit 增加 tag（如 v0.0.3）
+
+```bash
+git tag v0.0.3
+```
+
+- 删除已有的 tag（如 v0.0.1）
+
+```bash
+git tag -d v0.0.1
+```
+
+- 将本地 tag 提交到远程仓库
+
+```bash
+git push origin --tags
 ```
 
 ## Git 删除大文件历史

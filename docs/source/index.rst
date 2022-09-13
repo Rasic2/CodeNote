@@ -15,4 +15,5 @@
    migration.rst
    wsl.md
    docker.md
+   qbittorrent.md
    tricks.md 

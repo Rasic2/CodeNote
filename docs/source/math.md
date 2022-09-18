@@ -6,7 +6,7 @@
 
 ### 旋转角计算
 
-旋转前后的向量 P、Q 之间的夹角 θ 计算公式为：
+旋转前后的向量 $P$、$Q$ 之间的夹角 $θ$ 计算公式为：
 
 $$
 θ = arccos(\frac{P \cdot Q}{|P||Q|})
@@ -14,8 +14,36 @@ $$
 
 ### 旋转轴计算
 
+旋转轴 $c$ 为 $a$ 与 $b$ 向量的叉乘，即
+
+$$
+c = a \times b = \begin{pmatrix}a_2b_3 - a_3b_2
+\\ a_3b_1 - a_1b_3
+\\ a_1b_2 - a_2b_1
+\end{pmatrix}
+$$
+
 ### Rodrigues 旋转公式
 
+旋转矩阵 $M$ 可由旋转轴和旋转角推导得出，具体为：
+
+$$
+\begin{aligned}
+M &= e^{\tilde{w}θ} \\
+  &= I + \tilde{w}sinθ+\tilde{w}^2(1-cosθ) \\
+  &= \begin{bmatrix}
+      cosθ+w_x^2(1-cosθ) & w_xw_y(1-cosθ)-w_zsinθ & w_ysinθ+w_xw_z(1-cosθ) \\ 
+      w_zsinθ+w_xw_y(1-cosθ) & cosθ+w_y^2(1-cosθ) & w_yw_z(1-cosθ)-w_xsinθ \\ 
+      w_xw_z(1-cosθ)-w_ysinθ & w_xsinθ+w_yw_z(1-cosθ) & cosθ+w_z^2(1-cosθ)
+     \end{bmatrix}
+\end{aligned}
+$$
+
+其中 $\tilde{w} = \begin{bmatrix}
+0    & -w_z & w_y  \\
+w_z  & 0    & -w_x \\
+-w_y & w_x  & 0
+\end{bmatrix}$
 ### 代码实现
 
 ### 参考

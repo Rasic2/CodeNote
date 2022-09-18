@@ -17,4 +17,5 @@
    powershell.md
    docker.md
    qbittorrent.md
+   math.md
    tricks.md 

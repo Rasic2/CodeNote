@@ -14,6 +14,7 @@
    package.rst
    migration.rst
    wsl.md
+   powershell.md
    docker.md
    qbittorrent.md
    tricks.md 

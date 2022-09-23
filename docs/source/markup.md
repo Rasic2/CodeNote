@@ -1,10 +1,10 @@
 # 标记语言教程
 
-## $\TeX$
+## LaTeX
 
 LaTeX（$\LaTeX$，音译“拉泰赫”）是一种基于 $\TeX$ 的排版系统，它非常适用于生成高印刷质量的科技和数学类文档。确切的来讲，他并不是一种标记语言，但因为日常工作中经常会和 [Markdown](https://markdown.com.cn/) 一起使用，故而列在此处。
 
-### $\LaTeX$ 常用符号
+### LaTeX 常用符号
 
 #### 特殊符号
 
@@ -86,6 +86,6 @@ LaTeX（$\LaTeX$，音译“拉泰赫”）是一种基于 $\TeX$ 的排版系�
   \end{aligned}
   $$
 
-### $\LaTeX$ 常用网站
+### LaTeX 常用网站
 
-- [在线 $\TeX$ 公式编辑器](https://www.latexlive.com/home)
+- [在线 $\LaTeX$ 公式编辑器](https://www.latexlive.com/home)

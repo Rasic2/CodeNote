@@ -10,4 +10,5 @@
    code.rst
    chemistry.md
    math.md
+   markup.md
    others.rst

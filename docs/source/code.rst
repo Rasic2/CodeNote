@@ -8,6 +8,7 @@
    :caption: 目录
 
    wsl.md
+   linux.md
    bash.md
    powershell.md
    python.rst

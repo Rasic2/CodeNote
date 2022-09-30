@@ -26,7 +26,7 @@
 
 ```
 font.family         : sans-serif  # 取消注释
-font.sans-serif     : DejaVu Sans, Bitstream Vera Sans, Computer Modern Sans Serif, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif # 取消注释, 如没有字体则响应添加
+font.sans-serif     : DejaVu Sans, Bitstream Vera Sans, Computer Modern Sans Serif, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif # 取消注释, 如没有字体则相应添加
 ```
 
 ### 参考

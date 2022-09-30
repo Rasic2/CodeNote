@@ -8,8 +8,9 @@
    :caption: 目录
 
    wsl.md
-   powershell.md
    bash.md
+   powershell.md
+   python.rst
    git.md
    docker.md
    mirror.rst

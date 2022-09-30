@@ -74,3 +74,32 @@ patchelf --replace-needed libc.so.6 /path/libc-2.14.so ./application
 ```
 
 其中，`application` 为要进行修改的程序或 `so` 文件，`/path/xx` 为用户自己安装的系统库文件
+
+## GLIBC 安装
+
+1. 下载对应版本的 `GLIBC`，下载地址[在这](http://ftp.gnu.org/gnu/glibc/)
+
+2. 解压 `glibc-xx.tar.gz` 文件，同时在解压目录下新建一个 `build` 目录
+
+```bash
+>>> tar -zxvf glibc-xx.tar.gz
+>>> cd glibc-xx
+```
+
+3. 执行 configure 命令
+
+```bash
+../configure --prefix=/your-install-path
+```
+
+4. 编译及安装
+
+```bash
+make -j 32 && make install
+```
+
+5. 删除源代码
+
+```bash
+rm -rf glibc-xx
+```

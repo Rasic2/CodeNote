@@ -1,52 +1,56 @@
-# Sphinx Tutorial
+# 在线文档制作
 
-[Sphinx](https://www.sphinx-doc.org/en/master/) is a useful tool to create intelligent and beautiful online documentation from `*.rst` and/or `*.md` files.
+如果想要制作一个在线文档并链接到 `Github` 项目主页，可以通过 `Sphinx + ReadTheDocs` 的方法来实现，下面我将就 `Sphinx` 首先做一个简单的介绍。
 
-## Install Sphinx
+## Sphinx 教程
 
-The `Sphinx` can easily install by conda, use following command:
+[Sphinx](https://www.sphinx-doc.org/en/master/) 是一个从 `*.rst` 和/或 `*.md` 文件制作精美在线文档的生产力工具。
 
-```
+### Sphinx 安装
+
+`Sphinx` 可以通过 `conda`进行快速的安装, 使用下面的命令：
+
+```bash
 conda install sphinx
 ```
 
-## Markdown Support
+### Markdown 支持
 
-Sphinx uses the `reStructuredText` markup language by default, so if you want to use `markdown` as the markup language, you should install the third-party extensions first.
+Sphinx 默认使用 `reStructuredText` 标记语言制作在线文档，因此若想使用 `markdown` 作为替代品，需要使用一些第三方工具来实现。
 
-Both [recommonmark](https://recommonmark.readthedocs.io/en/latest/) and [myst-parser](https://myst-parser.readthedocs.io/en/latest/) can read markdown, but the latter is more powerful. So this tutorial only introduce `myst-parser` to extend the `Sphinx`.
+[recommonmark](https://recommonmark.readthedocs.io/en/latest/) 和 [myst-parser](https://myst-parser.readthedocs.io/en/latest/) 都是不错的实现工具，但后者表现更佳。因此本教程只介绍如何利用 `myst-parser` 来扩展 `Sphinx`。
 
-You can install `myst-parser` use the following command:
+你可以使用下面的命令来安装 `myst-parser`：
 
-```
+```bash
 pip install myst-parser
 ```
 
-## Sphinx Theme
+### Sphinx 主题
 
-When you generate the `*.html` from sphinx, the default web theme is not very beautiful, so if you want to decorate the web page, you can change the default theme of sphinx, but should install theme extensions first.
+当使用 Sphinx 来生成 `*.html` 文件时, 默认的网页主题不是特别美观，因此若想制作精美的在线文档，首先需要更换 Sphinx 的默认主题。
 
-Following this command:
+使用下述命令安装 `sphinx_rtd_theme` 主题：
 
-```
+```bash
 pip install sphinx_rtd_theme
 ```
 
-The `sphinx_rtd_theme` will install and can be used by sphinx. This theme looks like this:
+该主题的示例如下：
 
 <div align=center><img width=700 src="_static/sphinx.png"/></div>
 
-## Configure Sphinx
+### Sphinx 配置
 
-Quick start a sphinx project is very easy, only need run the following command:
+快速开始一个 Sphinx 项目非常简单，只需要执行下述命令：
 
-```
+```bash
 sphinx-quickstart
 ```
 
-then following the introduction to complete the initial configuration.
+然后根据想到即可完成首次配置。
 
-Before we start the write the documentation, we need to configure the sphinx and extensions at first, and only `conf.py` file need to modify (locate in `/source` directory), like this.
+在开始书写文档之前，我们首先需要完成 Sphinx 和插件的配置，只需要修改 `conf.py` （该文件位于 `/source` 目录下）即可。
 
 ```python
 # Configuration file for the Sphinx documentation builder.
@@ -119,37 +123,37 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 ```
 
-Where `extensions` list the extensions we need to enable, `myst_enable_extensions` specify the extensions belonging to `myst-parser`, `source_suffix` list the documentation file suffix and `html_theme` specify the theme what we use.
+其中 `extensions` 列出了我们需要开启的扩展， `myst_enable_extensions` 表示 `myst-parser` 的子扩展，`source_suffix` 列出了作为文档的后缀，`html_theme` 指明我们想要使用的网页主题。
 
 :::{note}
-If you also list the `linkify` in the `myst_enable_extensions`, please install `myst-parser[linkify]` first.
+如果你在 `myst_enable_extensions` 中列出了 `linkify`，请提前安装 `myst-parser[linkify]`。
 :::
 
-## reStructuredText Grammar
+### reStructuredText 语法
 
-The rst grammar can see [here](https://ebf-contribute-guide.readthedocs.io/zh_CN/latest/rest-syntax/base-syntax.html), which is not the main content of this tutorial.
+`reStructuredText` 标记语言的语法可以看[这里](https://ebf-contribute-guide.readthedocs.io/zh_CN/latest/rest-syntax/base-syntax.html)。
 
-## Generate html
+### 生成 html
 
-After you finish the documentation, you can run the following command (in `/docs` directory) to generate the `*.html` and preview.
+在完成文档的书写之后，可以通过运行下述命令（在 `/docs` 目录下面执行）来制作离线文档并预览。
 
-```
+```bash
 make html
 ```
 
-## Online documentation
+## ReadTheDocs 教程
 
-If you want to make your documentation online, you can use [github](https://github.com/) and [readthedocs](https://readthedocs.org/) to manage.
+### 文档部署
 
-Following this steps:
+将 [Github](https://github.com/) 和 [readthedocs](https://readthedocs.org/) 联用可以实现文档的自动生成和部署，详细步骤如下：
 
-1. prepare a `.readthedocs.yaml` in your `root directory`
+1. 在 `根目录` 下面准备一个 `.readthedocs.yaml` 文件；
 
-2. push your documentation to `github`
+2. 将文档推送到 `Github`；
 
-3. link your `github` project to `readthedocs`
+3. 将 `Github` 项目与 `readthedocs` 网站关联。
 
-`.readthedocs.yaml` example:
+`.readthedocs.yaml` 示例:
 
 ```yaml
 # .readthedocs.yaml
@@ -183,3 +187,39 @@ sphinx:
 #     - method: setuptools
 #       path: .
 ```
+
+### 文档 pdf 下载
+
+通过下面的步骤可以将在线文档以 pdf 格式下载：
+
+1. 在 `.readthedocs.yaml` 中添加 `format` 和 `apt_packages` 键；
+
+```yaml
+# Set the version of Python and other tools you might need
+build:
+  os: ubuntu-20.04
+  tools:
+    python: "3.9"
+    # You can also specify other tool versions:
+    # nodejs: "16"
+    # rust: "1.55"
+    # golang: "1.17"
+  apt_packages:
+    - inkscape
+
+# If using Sphinx, optionally build your docs in additional formats such as PDF
+formats:
+  - pdf
+```
+
+其中，`format`表示我们想制作 `pdf` 版本的文档， `apt_packages` 是为了安装 `inkscape` 软件，该工具可以将 `svg` 图片进行转换以使 `latexpdf` 支持。
+
+2. 在 `conf.py` 中添加扩展 `sphinxcontrib.inkscapeconverter`;
+
+```python
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinxcontrib.inkscapeconverter']
+```
+
+3. 修改 `requirements.txt` 安装该扩展；
+
+4. 至此，便可以实现 `pdf` 格式的文档下载。

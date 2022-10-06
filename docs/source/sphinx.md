@@ -48,7 +48,7 @@ pip install sphinx_rtd_theme
 sphinx-quickstart
 ```
 
-然后根据想到即可完成首次配置。
+然后根据向导即可完成首次配置。
 
 在开始书写文档之前，我们首先需要完成 Sphinx 和插件的配置，只需要修改 `conf.py` （该文件位于 `/source` 目录下）即可。
 

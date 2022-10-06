@@ -1,2 +1,3 @@
 myst-parser
 myst-parser[linkify]
+sphinxcontrib.inkscapeconverter

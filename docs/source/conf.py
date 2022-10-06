@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'CodeNote'
-copyright = '2022, hui_zhou'
-author = 'hui_zhou'
+copyright = '2022, Hui Zhou'
+author = 'Hui Zhou'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
@@ -70,3 +70,10 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# -- Options for Latex ---
+latex_engine = 'xelatex'
+latex_use_xindy = False
+latex_elements = {
+    'preamble': '\\usepackage[UTF8]{ctex}\n',
+}

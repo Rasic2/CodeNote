@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'CodeNote'
+project = 'OnlineNote'
 copyright = '2022, Hui Zhou'
 author = 'Hui Zhou'
 
@@ -76,4 +76,5 @@ latex_engine = 'xelatex'
 latex_use_xindy = False
 latex_elements = {
     'preamble': '\\usepackage[UTF8]{ctex}\n',
+    'extraclassoptions': 'openany,oneside',
 }

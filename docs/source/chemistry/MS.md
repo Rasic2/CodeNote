@@ -30,6 +30,40 @@ arc 文件记录了原子结构变化的轨迹信息，其详细文件格式可�
 
 ### 电荷密度文件（\*.grd）
 
+grd 文件记录了电荷密度的信息，其详细文件格式可参看 MS 提供的离线手册，下面分步骤讲述如何查看 grd 文件的轨迹信息（以 CeO$_2$(111) 表面 H 吸附的模型为例）。
+
+1. 导入已经优化好的 xsd 文件；
+
+```{image} grd1.png
+:width: 500
+:align: center
+```
+
+2. 导入 grd 文件，选择 Edit-Insert From，弹出对话框，选择你想导入的 grd 文件；
+
+```{image} grd2.png
+:width: 400
+:align: center
+```
+
+3. 首次导入 grd 文件时，需要将电荷密度工具显示在工具栏处，选择 View-Toolbars-Volume Visualization 即可实现；
+
+```{image} grd3.png
+:width: 500
+:align: center
+```
+
+4. 完成第三步时，便可在工具栏处找到`电荷密度查看`相关的按钮选项，如上图红框所示；
+
+5. 点击 Create Isosurfaces，即可将电荷密度映射到结构模型中；
+
+6. 右键选择 Display Style-Isosurface, 调节合适的 isovalue 即可制作精美的电荷密度图（此处设置为 250）。
+
+```{image} grd4.png
+:width: 500
+:align: center
+```
+
 ## Perl 接口
 
 ### Perl 基础语法

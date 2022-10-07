@@ -11,5 +11,5 @@
    markup.md
    development.rst
    math.md
-   chemistry.md
+   chemistry.rst
    others.rst

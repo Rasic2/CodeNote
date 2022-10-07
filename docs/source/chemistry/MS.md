@@ -10,17 +10,17 @@ arc 文件记录了原子结构变化的轨迹信息，其详细文件格式可�
 
 1. 将 arc 文件拖到 MS 软件中，并根据个人习惯进行结构的调整；
 
-<div align=center><img width=500 src="freq1.png"></div>
+<div align=center><img width=500 src="../_static/freq1.png"></div>
 
 2. 初次导入 arc 文件时，需要将动画工具显示在工具栏处，选择 View-Toolbars-Animation 即可实现；
 
-<div align=center><img width=500 src="freq2.png"></div>
+<div align=center><img width=500 src="../_static/freq2.png"></div>
 
 3. 完成第二步时，便可在工具栏处找到`动画`相关的按钮选项，如上图红框所示；
 
 4. 点击播放按钮，结构自己就会按照轨迹的运动方向循环播放，至此便完成了 arc 文件的查看。
 
-<div align=center><img width=500 src="freq3.gif"></div>
+<div align=center><img width=500 src="../_static/freq3.gif"></div>
 
 ### 电荷密度文件（\*.grd）
 

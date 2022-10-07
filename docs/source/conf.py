@@ -78,7 +78,3 @@ latex_elements = {
     'preamble': '\\usepackage[UTF8]{ctex}\n',
     'extraclassoptions': 'openany,oneside',
 }
-latex_additional_files = ["_static/sphinx.png", 
-                          "_static/freq1.png", 
-                          "_static/freq2.png", 
-                          "_static/freq3.gif"]

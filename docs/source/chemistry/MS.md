@@ -10,11 +10,17 @@ arc 文件记录了原子结构变化的轨迹信息，其详细文件格式可�
 
 1. 将 arc 文件拖到 MS 软件中，并根据个人习惯进行结构的调整；
 
-<div align=center><img width=500 src="../_static/freq1.png"></div>
+```{image} freq1.png
+:width: 500
+:align: center
+```
 
 2. 初次导入 arc 文件时，需要将动画工具显示在工具栏处，选择 View-Toolbars-Animation 即可实现；
 
-<div align=center><img width=500 src="../_static/freq2.png"></div>
+```{image} freq2.png
+:width: 500
+:align: center
+```
 
 3. 完成第二步时，便可在工具栏处找到`动画`相关的按钮选项，如上图红框所示；
 

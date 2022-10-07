@@ -38,7 +38,10 @@ pip install sphinx_rtd_theme
 
 该主题的示例如下：
 
-<div align=center><img width=700 src="../_static/sphinx.png"/></div>
+```{image} sphinx.png
+:width: 700
+:align: center
+```
 
 ### Sphinx 配置
 

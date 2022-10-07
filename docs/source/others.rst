@@ -5,4 +5,4 @@
    :maxdepth: 2
    :caption: 目录
 
-   qbittorrent.md
+   others/qbittorrent.md

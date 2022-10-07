@@ -7,8 +7,9 @@
    :maxdepth: 2
    :caption: 目录
 
-   code.rst
-   chemistry.md
-   math.md
+   language.rst
    markup.md
+   development.rst
+   math.md
+   chemistry.md
    others.rst

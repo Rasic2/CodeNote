@@ -7,16 +7,13 @@
    :maxdepth: 1
    :caption: 目录
 
-   wsl.md
-   linux.md
-   bash.md
-   powershell.md
-   python.rst
-   git.md
-   docker.md
-   mirror.rst
-   package.rst
-   migration.rst
-   sphinx.md
-   codecov.md
-   bug.md
+   development/wsl.md
+   development/linux.md
+   development/git.md
+   development/docker.md
+   development/mirror.rst
+   development/package.rst
+   development/migration.rst
+   development/sphinx.md
+   development/codecov.md
+   development/bug.md

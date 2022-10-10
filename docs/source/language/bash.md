@@ -192,6 +192,14 @@ _files () {
 files=( $(_files) )
 ```
 
+## find 命令
+
+- 通过管道传送多个命令 (显示指明 `bash -c`)
+
+```bash
+find DIR -iname '*.gro' -exec bash -c 'echo -n "{} "; grep UNL {} | wc -l' \;
+```
+
 ## Linux 自定义命令补全
 
 实现 Linux 系统下自定义命令的补全需要借助 `bash-completion`，它是对 bash 补全功能的增强，可以实现对参数和包名的补全。

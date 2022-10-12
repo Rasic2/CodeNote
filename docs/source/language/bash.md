@@ -200,6 +200,22 @@ files=( $(_files) )
 find DIR -iname '*.gro' -exec bash -c 'echo -n "{} "; grep UNL {} | wc -l' \;
 ```
 
+- 查找重复文件
+
+```bash
+find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate
+```
+
+## xargs 命令
+
+- 参数替换（-I 选项）
+
+```bash
+ls | shuf -n 50 | xargs -I {} cp {} DIR
+```
+
+其中，`shuf` 命令随机选择 N 个文件
+
 ## Linux 自定义命令补全
 
 实现 Linux 系统下自定义命令的补全需要借助 `bash-completion`，它是对 bash 补全功能的增强，可以实现对参数和包名的补全。

@@ -50,8 +50,30 @@ units metal
 在 lj 单位类型下，通过命令 thermo_style 设置的热力学信息的输出是将能量对原子数量进行了归一化，即能量/原子，这可以通过命令 thermo_modify norm 进行修改。
 :::
 
-units lj  
-dimension 2  
+### dimension 命令
+
+`dimension` 命令用来定义模拟的维度。
+
+#### 语法
+
+```bash
+dimension N
+```
+
+其中，`N` 可选值 `2` `3`
+
+#### 示例
+
+```bash
+dimension 2
+```
+
+:::{important}
+该命令必须在模拟盒子建立（使用命令 `create_box` 或 `read_data`）之前使用。
+:::
+
+### atom_style 命令
+
 atom_style body nparticle 2 6
 
 read_data data.body
@@ -87,7 +109,7 @@ run 10000
 ### atomic 类型
 
 ```{image} lammps.png
-:width: 400
+:width: 300
 :align: center
 ```
 
@@ -105,12 +127,14 @@ charge 类型书写时除了上述的 5 项之外，还要在 `atom-type` 后面
 ### full 类型
 
 ```{image} lammps3.png
-:width: 400
+:width: 300
 :align: center
 ```
 
 full 类型除了上述的 6 项之外，还要在 `atom-ID` 后面加一列 `molecule-ID`，以及 `x` `y` `z` 后面加 `nx` `ny` `nz` 三列用于周期性原子的定位（可选）。
 
-### 参考
+## 参考
 
+- [LAMMPS—units 命令解析](https://zhuanlan.zhihu.com/p/410687074)
+- [LAMMPS 翻译系列-dimension 命令](http://www.52souji.net/lammps-command-dimension.html)
 - [lammps 不同类型 data 文件格式对比，以及不同类型 data 文件相互转换方法](https://zhuanlan.zhihu.com/p/420847294)

@@ -8,12 +8,20 @@ LaTeX（$\LaTeX$，音译“拉泰赫”）是一种基于 $\TeX$ 的排版系�
 
 #### 特殊符号
 
-| Grammar   |   Symbol    |
-| --------- | :---------: |
-| \alpha    |  $\alpha$   |
-| \beta     |   $\beta$   |
-| \gamma    |  $\gamma$   |
-| \tilde{w} | $\tilde{w}$ |
+| Grammar     |    Symbol     |
+| ----------- | :-----------: |
+| \alpha      |   $\alpha$    |
+| \beta       |    $\beta$    |
+| \gamma      |   $\gamma$    |
+| \sigma      |   $\sigma$    |
+| \tau        |    $\tau$     |
+| \epsilon    |  $\epsilon$   |
+| \varepsilon | $\varepsilon$ |
+| \eta        |    $\eta$     |
+| \pi         |     $\pi$     |
+| \mu         |     $\mu$     |
+| \rho        |    $\rho$     |
+| \tilde{w}   |  $\tilde{w}$  |
 
 #### 基本运算符号
 
@@ -27,6 +35,7 @@ LaTeX（$\LaTeX$，音译“拉泰赫”）是一种基于 $\TeX$ 的排版系�
 | Grammar     |    Symbol     |
 | ----------- | :-----------: |
 | \frac{a}{b} | $\frac{a}{b}$ |
+| \sqrt{a}    |  $\sqrt{a}$   |
 
 #### 矩阵表示
 

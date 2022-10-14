@@ -87,16 +87,27 @@ atom_style style args
 下述 `atom_style` 需要设置 `args` 参数，其余为空：
 
 - **body**
+
   `args` 可选值为：`bstyle` `bstyle-args`
+
 - **sphere**
+
   `args` 可选值为：`0` `1`
+
 - **bpm/sphere**
+
   `args` 可选值为：`0` `1`
+
 - **tdpd**
+
   `args` 可选值为：`Nspecies`
+
 - **template**
+
   `args` 可选值为：`template-ID`
+
 - **hybrid**
+
   `args` 可选值为：子类型的参数组合
 
 `accelerated styles` 可选值为：`angle/kk` `atomic/kk` `bond/kk` `charge/kk` `full/kk` `molecular/kk` `spin/kk`
@@ -166,6 +177,7 @@ atom_style tdpd 2
   `body` 接受一个 `bstyle` 参数，可选值为：`nparticle` `rounded/polygon` `rounded/polyhedron`
 
   - **nparticle**
+
     `nparticle` 将 `body` 表示为具有可变数量 N 个子粒子的刚体。
 
     指定该样式时需要两个额外的参数：
@@ -180,7 +192,89 @@ atom_style tdpd 2
     对于该种样式的坐标文件编写，参见[手册](https://docs.lammps.org/Howto_body.html)。
     :::
 
-read_data data.body
+### read_data 命令
+
+导入 LAMMPS 模拟所需要的数据文件，该文件可以是 ASCII 文本格式或 gzip 压缩文件格式。
+
+#### 语法
+
+```bash
+read_data file keyword args ...
+```
+
+其中，`file` 表示数据文件名；
+
+`keyword` 可选参数为：`add` `offset` `shift` `extra/atom/types` `extra/bond/types` `extra/angle/types` `extra/dihedral/types` `extra/improper/types` `extra/bond/per/atom` `extra/angle/per/atom` `extra/dihedral/per/atom` `extra/improper/per/atom` `group` `nocoeff` `fix`
+
+各关键词对应的参数为：
+
+- **add**
+
+  `args` 可选值为：`append` `IDoffset` `IDoffset` `MOLoffset` `merge`
+
+- **offset**
+
+  `args` 可选值为：`toff` `boff` `aoff` `doff` `ioff`
+
+- **shift**
+
+  `args` 可选值为：Sx Sy Sz
+
+- **extra/atom/types**
+
+  `args` 可选值为：#
+
+- **extra/angle/types**
+
+  `args` 可选值为：#
+
+- **extra/dihedral/types**
+
+  `args` 可选值为：#
+
+- **extra/improper/types**
+
+  `args` 可选值为：#
+
+- **extra/bond/per/atom**
+
+  `args` 可选值为：
+
+- **extra/angle/per/atom**
+
+  `args` 可选值为：
+
+- **extra/dihedral/per/atom**
+
+  `args` 可选值为：
+
+- **extra/improper/per/atom**
+
+  `args` 可选值为：
+
+- **extra/special/per/atom**
+
+  `args` 可选值为：
+
+- **group**
+
+  `args` 可选值为：`groupID`
+
+- **nocoeff**
+
+- **fix**
+
+  `args` 可选值为：`fix-ID` `header-string` `section-string`
+
+#### 示例
+
+```bash
+read_data data.lj
+read_data ../run7/data.polymer.gz
+read_data data.protein fix mycmap crossterm CMAP
+read_data data.water add append offset 3 1 1 1 1 shift 0.0 0.0 50.0
+read_data data.water add merge group solvent
+```
 
 velocity all create 1.44 87287 loop geom
 
@@ -241,4 +335,5 @@ full 类型除了上述的 6 项之外，还要在 `atom-ID` 后面加一列 `mo
 
 - [LAMMPS—units 命令解析](https://zhuanlan.zhihu.com/p/410687074)
 - [LAMMPS 翻译系列-dimension 命令](http://www.52souji.net/lammps-command-dimension.html)
+- [LAMMPS 翻译系列-atom-style 命令](http://www.52souji.net/lammps-command-atom-style.html)
 - [lammps 不同类型 data 文件格式对比，以及不同类型 data 文件相互转换方法](https://zhuanlan.zhihu.com/p/420847294)

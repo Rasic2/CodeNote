@@ -10,4 +10,5 @@
    chemistry/MS.md
    chemistry/Gaussian.md
    chemistry/VASP.md
+   chemistry/lammps.md
    chemistry/vmd.md

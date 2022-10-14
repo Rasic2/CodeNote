@@ -60,7 +60,7 @@ units metal
 dimension N
 ```
 
-其中，`N` 可选值 `2` `3`
+其中，`N` 可选值为： `2` `3`
 
 #### 示例
 
@@ -74,7 +74,111 @@ dimension 2
 
 ### atom_style 命令
 
-atom_style body nparticle 2 6
+`atom_style` 命令用来定义模拟过程中原子的类型，决定原子应该具有哪些属性。
+
+#### 语法
+
+```bash
+atom_style style args
+```
+
+其中，`style` 可选值为： `amoeba` `angle` `atomic` **`body`** `bond` `charge` `dielectric` `dipole` `dpd` `edpd` `electron` `ellipsoid` `full` `line` `mdpd` `mesont` `molecular` `oxdna` `peri` `smd` `sph` `sphere` `bpm/sphere` `spin` `tdpd` `tri` `template` `wavepacket` `hybrid`
+
+下述 `atom_style` 需要设置 `args` 参数，其余为空：
+
+- **body**
+  `args` 可选值为：`bstyle` `bstyle-args`
+- **sphere**
+  `args` 可选值为：`0` `1`
+- **bpm/sphere**
+  `args` 可选值为：`0` `1`
+- **tdpd**
+  `args` 可选值为：`Nspecies`
+- **template**
+  `args` 可选值为：`template-ID`
+- **hybrid**
+  `args` 可选值为：子类型的参数组合
+
+`accelerated styles` 可选值为：`angle/kk` `atomic/kk` `bond/kk` `charge/kk` `full/kk` `molecular/kk` `spin/kk`
+
+:::{important}
+该命令必须在建立模拟盒子（使用命令 `read_data` 或 `read_restart` 或 `create_box`）之前使用。
+:::
+
+#### 示例
+
+```bash
+atom_style atomic
+atom_style bond
+atom_style full
+atom_style body nparticle 2 10
+atom_style hybrid charge bond
+atom_style hybrid charge body nparticle 2 5
+atom_style spin
+atom_style template myMols
+atom_style hybrid template twomols charge
+atom_style tdpd 2
+```
+
+#### 参数介绍
+
+下表列出了每种类型所包括的属性以及会用到这种类型的典型物理体系。所有类型都包括坐标、速度、原子 ID 和原子类型。
+
+|  原子类型  |                         属性                         |               适用体系                |
+| :--------: | :--------------------------------------------------: | :-----------------------------------: |
+|   amoeba   |          molecular + charge + 1/5 neighbors          |  AMOEBA/HIPPO polarized force fields  |
+|   angle    |                   bonds and angles                   |  bead-spring polymers with stiffness  |
+|   atomic   |               only the default values                | coarse-grain liquids, solids, metals  |
+|    body    | mass, inertia moments, quaternion, angular momentum  |           arbitrary bodies            |
+|    bond    |                        bonds                         |         bead-spring polymers          |
+|   charge   |                        charge                        |      atomic system with charges       |
+| dielectric |               dipole, area, curvature                |   system with surface polarization    |
+|   dipole   |               charge and dipole moment               |     system with dipolar particles     |
+|    dpd     |      internal temperature and internal energies      |             DPD particles             |
+|    edpd    |            temperature and heat capacity             |            eDPD particles             |
+|  electron  |             charge and spin and eradius              |        electronic force field         |
+| ellipsoid  |         shape, quaternion, angular momentum          |         aspherical particles          |
+|    full    |                  molecular + charge                  |             bio-molecules             |
+|    line    |             end points, angular velocity             |             rigid bodies              |
+|    mdpd    |                       density                        |            mDPD particles             |
+|   mesont   | mass, radius, length, buckling, connections, tube id |         mesoscopic nanotubes          |
+| molecular  |         bonds, angles, dihedrals, impropers          |          uncharged molecules          |
+|   oxdna    |                 nucleotide polarity                  |   coarse-grained DNA and RNA models   |
+|    peri    |                     mass, volume                     |     mesoscopic Peridynamic models     |
+|    smd     |    volume, kernel diameter, contact radius, mass     |     solid and fluid SPH particles     |
+|    sph     |                    rho, esph, cv                     |             SPH particles             |
+|   sphere   |           diameter, mass, angular velocity           |            granular models            |
+| bpm/sphere |     diameter, mass, angular velocity, quaternion     | granular bonded particle models (BPM) |
+|    spin    |                   magnetic moment                    |    system with magnetic particles     |
+|    tdpd    |                chemical concentration                |            tDPD particles             |
+|  template  |            template index, template atom             |  small molecules with fixed topology  |
+|    tri     |           corner points, angular momentum            |             rigid bodies              |
+| wavepacket |      charge, spin, eradius, etag, cs_re, cs_im       |                 AWPMD                 |
+
+上面的类型中，除了 `sphere`, `ellipsoid`, `electron`, `peri`, `wavepacket`, `line`, `tri`, and `body` 定义的是**有限尺寸粒子**，其他类型定义的都是**点粒子**。
+
+对于定义为**有限尺寸粒子**的原子类型，在设置质量时是对每一个粒子进行的；而对于**点粒子**，质量是对类型进行设置的。
+
+- **body**
+
+  在 LAMMPS 中，`body` 是广义的**有限尺寸粒子**。单个 `body` 可以表示复杂的实体，例如离散点的表面网格、子粒子的集合、可变形对象等。
+
+  `body` 接受一个 `bstyle` 参数，可选值为：`nparticle` `rounded/polygon` `rounded/polyhedron`
+
+  - **nparticle**
+    `nparticle` 将 `body` 表示为具有可变数量 N 个子粒子的刚体。
+
+    指定该样式时需要两个额外的参数：
+
+    ```bash
+    atom_style body nparticle Nmin Nmax
+    ```
+
+    其中，`Nmin` 表示最小子粒子数，`Nmax` 表示最大子粒子数，`Nmin` 和 `Nmax` 参数用于限制每个粒子使用的数据结构的大小。
+
+    :::{note}
+    对于该种样式的坐标文件编写，参见[手册](https://docs.lammps.org/Howto_body.html)。
+    :::
 
 read_data data.body
 
@@ -95,7 +199,7 @@ dump 1 all local 100 dump.body index c_1[1] c_1[2] c_1[3] c_1[4]
 
 #dump 2 all image 1000 image.\*.jpg type type &
 
-# zoom 1.6 adiam 1.5 body type 1.0 0
+#zoom 1.6 adiam 1.5 body type 1.0 0
 
 #dump_modify 2 pad 5
 

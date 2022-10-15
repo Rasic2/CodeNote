@@ -12,3 +12,4 @@
    chemistry/VASP.md
    chemistry/lammps.md
    chemistry/vmd.md
+   chemistry/appendix.md

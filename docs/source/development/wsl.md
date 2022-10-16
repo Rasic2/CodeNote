@@ -37,3 +37,46 @@ wsl --import Ubuntu-22.04 D:\wsl\Ubuntu2004 D:\wsl-Ubuntu-22.04 --version 2
 :::{note}
 当 WSL 中除了 Ubuntu 还有 docker 时，卸载 Ubuntu 后，docker 会成为 WSL 的默认分发（即执行 `wsl -l -v` 时左侧有星号），重新导入迁移后的 Ubuntu 并不会自动成为 WSL 的默认分发，这时候需要设置 WSL 为默认分发，即执行命令：`wsl --setdefault Ubuntu-22.04`，参考[这里](https://zhuanlan.zhihu.com/p/337361570)。
 :::
+
+## XShell 连接 WSL2
+
+1. 重新安装 ssh
+
+```bash
+sudo apt-get remove --purge openssh-server ## 先删 ssh
+sudo apt-get install openssh-server ## 在安装 ssh
+sudo rm /etc/ssh/ssh_config ## 删配置文件，让 ssh 服务自己想办法链接
+sudo service ssh --full-restart
+```
+
+2. 修改配置文件
+
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+修改如下（取消注释）：
+
+```bash
+Port 22
+ListenAddress 0.0.0.0
+PasswordAuthentication yes
+```
+
+3. 重启 ssh（每次重启 wsl 都要执行该语句）
+
+```bash
+sudo service ssh --full-restart
+```
+
+4. 重新生成 host key
+
+```bash
+sudo dpkg-reconfigure openssh-serve
+```
+
+5. 设置 XSell 中主机地址（127.0.0.1）、用户名和密码等
+
+### 参考
+
+- [XShell 初次连接 WSL2 教程](https://blog.csdn.net/qq_42437577/article/details/110664557)

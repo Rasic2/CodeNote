@@ -15,6 +15,16 @@
 >>> arch
 ```
 
+## yum 包管理器
+
+yum 是一个在 Fedora 和 RedHat 以及 SUSE 中的 Shell 前端软件包管理器。
+
+- ssh 安装
+
+```bash
+yum -y install openssh-clients
+```
+
 ## CentOS6 系统相关
 
 对于 CentOS6 系统来说，官方已经停止维护，但部分程序还会在部署该系统的服务器上运行，但升级成本（难度）过大，且时常会遇到一些系统底层相关的问题，故在此记录。
@@ -103,3 +113,13 @@ make -j 32 && make install
 ```bash
 rm -rf glibc-xx
 ```
+
+## 问题记录
+
+1. 使用 `sh 文件`安装 anaconda 时出现 **Error -3 from inflate: incorrect header check** 错误
+
+解决办法：先将 sh 文件压缩之后再上传到服务器解压安装。
+
+2. ~/.ssh/config 文件出现 **Bad owner or permissions** 错误
+
+解决办法：文件权限位问题，设置 config 文件权限为 `600` （chmod 命令）。

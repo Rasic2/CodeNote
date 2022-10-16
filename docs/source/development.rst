@@ -13,7 +13,7 @@
    development/docker.md
    development/mirror.rst
    development/package.rst
-   development/migration.rst
+   development/migration.md
    development/sphinx.md
    development/codecov.md
    development/bug.md

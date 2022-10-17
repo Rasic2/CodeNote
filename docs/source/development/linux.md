@@ -25,6 +25,12 @@ yum 是一个在 Fedora 和 RedHat 以及 SUSE 中的 Shell 前端软件包管�
 yum -y install openssh-clients
 ```
 
+- service 安装
+
+```bash
+yum -y install initscripts
+```
+
 ## CentOS6 系统相关
 
 对于 CentOS6 系统来说，官方已经停止维护，但部分程序还会在部署该系统的服务器上运行，但升级成本（难度）过大，且时常会遇到一些系统底层相关的问题，故在此记录。

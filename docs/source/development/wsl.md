@@ -77,6 +77,49 @@ sudo dpkg-reconfigure openssh-serve
 
 5. 设置 XSell 中主机地址（127.0.0.1）、用户名和密码等
 
+### 设置开机启动 WSL 的 SSH 服务
+
+1. 新建一个 powershell 脚本（AutoStartSSH.ps1），内容为：
+
+```powershell
+wsl -u root service ssh start
+```
+
+2. 选择此电脑-管理-任务计划程序-创建基本任务，将该脚本添加到计划任务中，步骤如下：
+
+```{image} wsl1.png
+:width: 500
+:align: center
+```
+
+```{image} wsl2.png
+:width: 500
+:align: center
+```
+
+```{image} wsl3.png
+:width: 500
+:align: center
+```
+
+```{image} wsl4.png
+:width: 500
+:align: center
+```
+
+```{image} wsl5.png
+:width: 500
+:align: center
+```
+
+3. 使用最高权限运行脚本，之后就大功告成了。
+
+```{image} wsl6.png
+:width: 500
+:align: center
+```
+
 ### 参考
 
 - [XShell 初次连接 WSL2 教程](https://blog.csdn.net/qq_42437577/article/details/110664557)
+- [开机启动 WSL2 的 SSHD 服务](http://lyallchan.github.io/2021/01/24/%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8WSL2%E7%9A%84SSHD%E6%9C%8D%E5%8A%A1/)

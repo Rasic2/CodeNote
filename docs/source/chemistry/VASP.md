@@ -16,7 +16,7 @@ $$
 N_i = max(1, \frac{2\pi \times b_i}{KSPACING})
 $$
 
-其中，$b_i$ 为 OUTCAR 中的倒格子常量（单位为$2\pi/\AA$），KSPACING 的单位为$1/\AA$，因此需要乘以$2\pi$。
+其中，$b_i$ 为 OUTCAR 中的倒格子常量（单位为$2\pi/$Å），KSPACING 的单位为$1/$Å，因此需要乘以$2\pi$。
 
 ### NELECT
 

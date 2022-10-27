@@ -100,6 +100,12 @@ git tag
 git tag v0.0.3
 ```
 
+- 后期为某个版本号增加 tag（如 v0.1.1）
+
+```bash
+git tag -a v0.1.1 COMMIT_ID -m "message"
+```
+
 - 删除已有的 tag（如 v0.0.1）
 
 ```bash

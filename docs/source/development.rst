@@ -11,6 +11,7 @@
    development/linux.md
    development/git.md
    development/docker.md
+   development/apptainer.md
    development/mirror.rst
    development/package.rst
    development/migration.md

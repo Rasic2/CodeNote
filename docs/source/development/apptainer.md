@@ -32,10 +32,16 @@ Apptainer 是一个开源项目，社区不断壮大，用户基础不断扩大�
 
 ## 语法
 
-- 获取公共镜像
+- 将公共镜像转为 sif
 
 ```bash
 apptainer pull docker://ubuntu
+```
+
+- 将本地 docker 镜像转为 sif
+
+```bash
+apptainer pull docker-daemon:vasp:5.4.4
 ```
 
 - 以沙盒模式构建镜像
@@ -54,4 +60,10 @@ apptainer run hello-world
 
 ```bash
 apptainer shell -w hello-world
+```
+
+- 执行容器中的命令（其中，容器为 vasp_5.4.4，命令为 vasp_gam）
+
+```bash
+apptainer exec vasp_5.4.4 /opt/vasp/bin/vasp_gam
 ```

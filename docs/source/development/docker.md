@@ -68,6 +68,12 @@ docker cp local_path container_id:docker_path
 docker cp container_id:docker_path local_path
 ```
 
+- 容器重命名
+
+```bash
+docker rename old_name new_name
+```
+
 - 退出 docker 终端（快捷键`Ctrl+P+Q`）
 
 - 终止一个容器

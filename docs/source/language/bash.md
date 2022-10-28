@@ -192,6 +192,14 @@ _files () {
 files=( $(_files) )
 ```
 
+## mkdir 命令
+
+- 构建多级目录 (-p 参数)
+
+```bash
+mkdir -p /opt/intel/oneapi/**
+```
+
 ## find 命令
 
 - 通过管道传送多个命令 (显示指明 `bash -c`)

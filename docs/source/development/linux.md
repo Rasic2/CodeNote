@@ -1,4 +1,4 @@
-# Linux 系统相关
+# Linux 运维相关
 
 ## 系统相关命令
 
@@ -119,6 +119,24 @@ make -j 32 && make install
 ```bash
 rm -rf glibc-xx
 ```
+
+## ldd 命令
+
+`ldd` 命令用于打印程序或者库文件所依赖的共享库列表。
+
+### 参考
+
+- [ldd 命令详解](https://blog.csdn.net/f_carey/article/details/109686310)
+
+## strace 命令
+
+`strace` 是一个可用于诊断、调试和教学的 Linux 用户空间跟踪器。我们用它来监控用户空间进程和内核的交互，比如系统调用、信号传递、进程状态变更等。
+
+我用它查看过 `whoami` 执行未成功的问题，最后定位到的原因是缺少 `libnss_files.so.2` 这个动态库。
+
+### 参考
+
+- [strace 命令详解](https://www.cnblogs.com/machangwei-8/p/10388883.html)
 
 ## 问题记录
 

@@ -29,3 +29,9 @@ $$
 :::{note}
 该参数设置为 0 无效，可用 0.0001 代替。
 :::
+
+## 报错解决方案
+
+- forrtl: severe (174): SIGSEGV, segmentation fault occurred
+
+执行 `ulimit -s unlimited` 命令可解决

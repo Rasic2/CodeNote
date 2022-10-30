@@ -144,6 +144,59 @@ html_static_path = ['_static']
 make html
 ```
 
+### 构建多语言版本
+
+1. 安装 `sphinx-intl`
+
+```bash
+pip install sphinx-intl
+```
+
+2. 从英文文档中创建可翻译的文件
+
+首先修改 `conf.py` 文件，指定生成的翻译文件目录 `locales`：
+
+```python
+# multi-language docs
+language = 'en'
+locale_dirs = ['../locales/']   # path is example but recommended.
+gettext_compact = False  # optional.
+gettext_uuid = True  # optional.
+```
+
+然后执行下述指令生成 `pot` 文件
+
+```bash
+> cd docs
+> sphinx-build -b gettext ./source build/gettext
+```
+
+3. 在翻译文件上添加对应的中文
+
+首先执行下述命令将 `pot` 文件转为 `po` 文件
+
+```bash
+> sphinx-intl update -p ./build/gettext -l zh_CN
+```
+
+然后在 `po` 文件的 `msgstr` 部分添加相应的翻译文档即可
+
+4. 构建翻译文档
+
+执行下述命令将 po 文件构建为 html 文件
+
+```bash
+sphinx-build -b html -D language=zh_CN ./source/ build/html/zh_CN
+```
+
+5. 上传 `locales` 到 `github`（仅 `po` 文件即可）
+
+6. 在 RTD 上创建一个新项目，并链接到原来的 git 仓库，指定语言为 `Simplified Chinese`（非 Chinese），并将该新项目作为原项目的`子项目`和`翻译`项目即可。
+
+#### 参考
+
+- [Sphinx + Read the Docs 的多语言版本文档实现](https://zhuanlan.zhihu.com/p/427843476)
+
 ## ReadTheDocs 教程
 
 ### 文档部署

@@ -22,7 +22,7 @@
 >>> matplotlib.get_cachedir()
 ```
 
-4. 修改 `matplotlibrc` 的文件内容 (取消注释及添加响应字体)
+4. 修改 `matplotlibrc` 的文件内容 (取消注释及添加相应字体)
 
 ```
 font.family         : sans-serif  # 取消注释

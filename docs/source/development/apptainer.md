@@ -67,3 +67,9 @@ apptainer shell -w hello-world
 ```bash
 apptainer exec vasp_5.4.4 /opt/vasp/bin/vasp_gam
 ```
+
+- 映射宿主机目录到容器并执行
+
+```bash
+apptainer exec --bind $SRC/pot:$DEST/pot gvasp gvasp submit opt
+```

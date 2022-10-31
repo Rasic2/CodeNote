@@ -90,6 +90,28 @@ docker container rm CONTAINER1 CONTAINER2 ...
 docker rm CONTAINER1 CONTAINER2 ...
 ```
 
+- 查看 docker 占用空间大小
+
+```bash
+docker system df
+```
+
+加上 `-v` 参数展示详细信息
+
+- 查看 docker 占用空间大小
+
+```bash
+docker system df
+```
+
+加上 `-v` 参数展示详细信息
+
+- 清除 docker 构建缓存（超过 48 小时以上）
+
+```bash
+docker builder prune --filter 'until=48h'
+```
+
 ## Linux 基础镜像组件（rootfs）
 
 1. `bin` 目录
@@ -185,7 +207,7 @@ oneapi
 │       └── lib
 │           └── intel64
 │               ├── [313K] libmkl_blacs_intelmpi_lp64.so.2
-│               ├── [ 71M] libmkl_core.so.2 
+│               ├── [ 71M] libmkl_core.so.2
 │               ├── [ 40M] libmkl_def.so.2
 │               ├── [ 20M] libmkl_intel_lp64.so.2
 │               └── [ 28M] libmkl_sequential.so.2
@@ -282,15 +304,15 @@ ENV FI_PROVIDER_PATH="/opt/intel/oneapi/mpi/2021.7.0/libfabric/lib/prov:${FI_PRO
 
 ## 构建 VASP 镜像（5.4.4 版本）
 
-1. 首先拉取 intel/oneapi-hpckit 基础镜像
+1. 首先拉取 `intel/oneapi-hpckit` 基础镜像
 
 ```
 docker pull intel/oneapi-hpckit
 ```
 
-2. 在这个基础镜像中将 VASP 编译出来
+2. 在这个基础镜像中将 `VASP` 编译出来
 
-3. 编写 Dockerfile 从空白镜像构建 VASP 镜像（最终大小为 260M+），如下：
+3. 编写 `Dockerfile` 从空白镜像构建 `VASP` 镜像（最终大小为 260M+），如下：
 
 ```bash
 From scratch
@@ -316,6 +338,28 @@ ENV LD_LIBRARY_PATH="/opt/intel/oneapi/mpi/2021.7.0/libfabric/lib:${LD_LIBRARY_P
 ENV FI_PROVIDER_PATH="/opt/intel/oneapi/mpi/2021.7.0/libfabric/lib/prov:${FI_PROVIDER_PATH}"
 
 WORKDIR /opt/vasp/bin/
+
+CMD ["/usr/bin/bash"]
+```
+
+构建 GVasp 镜像（0.1.2 版本）
+
+1. 首先拉取 `centos7` 基础镜像
+
+2. 在该镜像中使用 `conda` 安装 `GVasp`
+
+3. 编写 `Dockerfile` 从空白镜像构建 `GVasp` 镜像（最终大小为 320M+），如下（`build` 文件夹结构可以看<a href="../_static/gvasp_build" target="_blank">这里</a>）：
+
+```bash
+From scratch
+LABEL maintainer="Hui Zhou"
+
+COPY build/bin /bin
+COPY build/usr /usr
+COPY build/lib64 /lib64
+COPY build/home /home
+
+ENV PATH="/home/hzhou/anaconda3/envs/gvasp/bin:${PATH}"
 
 CMD ["/usr/bin/bash"]
 ```

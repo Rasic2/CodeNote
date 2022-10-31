@@ -4,7 +4,7 @@
 
 ## 添加字体
 
-对于默认安装的 `matplotlib`，可能会缺少某些常用的字体，如 `Arial`，因此需要添加相关的字体并让 `matplotlib` 使用我们自行添加的字体，具体步骤如下（以 `Arial` 为例, 可在<a href="arial.ttf" target="_blank">此处</a>下载）：
+对于默认安装的 `matplotlib`，可能会缺少某些常用的字体，如 `Arial`，因此需要添加相关的字体并让 `matplotlib` 使用我们自行添加的字体，具体步骤如下（以 `Arial` 为例, 可在<a href="../_static/arial.ttf" target="_blank">此处</a>下载）：
 
 1. 获取 matplotlib 的字体路径
 

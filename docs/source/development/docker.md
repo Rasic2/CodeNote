@@ -342,7 +342,7 @@ WORKDIR /opt/vasp/bin/
 CMD ["/usr/bin/bash"]
 ```
 
-构建 GVasp 镜像（0.1.2 版本）
+## 构建 GVasp 镜像（0.1.2 版本）
 
 1. 首先拉取 `centos7` 基础镜像
 

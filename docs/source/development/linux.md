@@ -138,6 +138,57 @@ rm -rf glibc-xx
 
 - [strace 命令详解](https://www.cnblogs.com/machangwei-8/p/10388883.html)
 
+## LOGO 制作
+
+### figlet 命令
+
+- 安装 figlet
+
+```bash
+sudo apt install figlet
+```
+
+- 效果展示
+
+```bash
+> figlet GVasp
+  ______     __
+ / ___\ \   / /_ _ ___ _ __
+| |  _ \ \ / / _` / __| '_ \
+| |_| | \ V / (_| \__ \ |_) |
+ \____|  \_/ \__,_|___/ .__/
+                      |_|
+
+> figlet -c GVasp  # 居中
+                           ______     __
+                          / ___\ \   / /_ _ ___ _ __
+                         | |  _ \ \ / / _` / __| '_ \
+                         | |_| | \ V / (_| \__ \ |_) |
+                          \____|  \_/ \__,_|___/ .__/
+                                               |_|
+> showfigfonts # 查看可用字体
+```
+
+### toilet 命令
+
+- 安装 toilet
+
+```bash
+sudo apt install toilet
+```
+
+- 效果展示
+
+```bash
+> figlet GVasp | toilet -f term --gay  # 彩虹色（终端可见）
+  ______     __
+ / ___\ \   / /_ _ ___ _ __
+| |  _ \ \ / / _` / __| '_ \
+| |_| | \ V / (_| \__ \ |_) |
+ \____|  \_/ \__,_|___/ .__/
+                      |_|
+```
+
 ## 问题记录
 
 1. 使用 `sh 文件`安装 anaconda 时出现 **Error -3 from inflate: incorrect header check** 错误

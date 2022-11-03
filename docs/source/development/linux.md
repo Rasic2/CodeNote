@@ -205,6 +205,32 @@ sudo apt install toilet
                       |_|
 ```
 
+## 通过 ssh 远程使用服务器 jupyter notebook
+
+1. ssh 连接到服务器，创建 jupyter notebook 密码
+
+```bash
+jupyter notebook password
+```
+
+2. 在服务器的某端口打开 jupyter notebook
+
+```bash
+jupyter notebook --no-browser --port=12345
+```
+
+3. 建立 ssh 连接，将服务器打开的端口远程转发到本地
+
+```bash
+ssh -N -L 8080:localhost:12345 <user_name>@<host_ip>
+```
+
+4. 本地打开 http://localhost:8080/ 使用 jupyter notebook
+
+### 参考
+
+- [通过 ssh 远程使用服务器 jupyter notebook](https://blog.csdn.net/qq_34769162/article/details/107947034)
+
 ## 问题记录
 
 1. 使用 `sh 文件`安装 anaconda 时出现 **Error -3 from inflate: incorrect header check** 错误

@@ -132,6 +132,22 @@ rm -rf glibc-xx
 
 `strace` 是一个可用于诊断、调试和教学的 Linux 用户空间跟踪器。我们用它来监控用户空间进程和内核的交互，比如系统调用、信号传递、进程状态变更等。
 
+### 常用语法
+
+- 追踪每一种系统调用的耗时、次数和失败数
+
+```bash
+strace -c CMD
+```
+
+- 显示系统调用的时间
+
+```bash
+strace -t CMD
+```
+
+### 记录原因
+
 我用它查看过 `whoami` 执行未成功的问题，最后定位到的原因是缺少 `libnss_files.so.2` 这个动态库。
 
 ### 参考
@@ -198,3 +214,15 @@ sudo apt install toilet
 2. ~/.ssh/config 文件出现 **Bad owner or permissions** 错误
 
 解决办法：文件权限位问题，设置 config 文件权限为 `600` （chmod 命令）。
+
+3. SSH 免密失败并报错：no mutual signature algorithm
+
+解决办法：ssh 连接时添加选项：`-o PubkeyAcceptedKeyTypes=+ssh-rsa`
+
+```bash
+ssh user@ip -i id_rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
+```
+
+### 参考
+
+- [SSH 免密失败并报错：no mutual signature algorithm](https://blog.csdn.net/qq_41765918/article/details/126837789)

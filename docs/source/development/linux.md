@@ -231,6 +231,23 @@ ssh -N -L 8080:localhost:12345 <user_name>@<host_ip>
 
 - [通过 ssh 远程使用服务器 jupyter notebook](https://blog.csdn.net/qq_34769162/article/details/107947034)
 
+## VSCode 远程开发（Shell）
+
+1. 安装 `Remote SSH` 插件，进行 SSH 连接配置，主要是配置 `.ssh/config` 文件
+
+2. 安装插件
+
+- shell-format：格式化工具（远程）
+- shellman：语法提示（本地）
+- shellcheck：语法检查（远程）
+- Code Runner：程序运行工具（远程）
+
+### 参考
+
+- [VScode 远程开发 shell 远程编写调试](https://blog.csdn.net/u010953692/article/details/103324732)
+
+- [VS Code 搭建远程调试 Shell 环境（Remote Linux）](https://www.cnblogs.com/testopsfeng/p/13945846.html)
+
 ## 问题记录
 
 1. 使用 `sh 文件`安装 anaconda 时出现 **Error -3 from inflate: incorrect header check** 错误

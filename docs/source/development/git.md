@@ -18,6 +18,12 @@ git init
 git config -l
 ```
 
+- 配置颜色
+
+```bash
+git config --global color.ui true
+```
+
 - 给远程仓库地址添加别名
 
 ```bash

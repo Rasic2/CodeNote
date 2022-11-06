@@ -20,7 +20,9 @@ Apptainer 是一个开源项目，社区不断壮大，用户基础不断扩大�
 
 - 提供商业支持。
 
-## Ubuntu 安装
+## 安装
+
+### Ubuntu 安装 apptainer-1.1.2 版本
 
 ```bash
 > sudo apt-get update
@@ -29,6 +31,33 @@ Apptainer 是一个开源项目，社区不断壮大，用户基础不断扩大�
 > wget https://github.com/apptainer/apptainer/releases/download/v1.1.2/apptainer_1.1.2_amd64.deb
 > sudo apt-get install -y ./apptainer_1.1.2_amd64.deb
 ```
+
+### CentOS6 安装 singularity-2.4.3 版本
+
+1. 从 CentOS6 镜像容器中安装 `libarchive-devel`
+
+2. 拷贝下述文件到想要安装 singularity 的 CentOS6 机器上
+
+```bash
+lib64/
+├── archive_entry.h
+├── archive.h
+├── libarchive.so -> libarchive.so.2.8.3
+├── libarchive.so.2 -> libarchive.so.2.8.3
+└── libarchive.so.2.8.3
+```
+
+3. 进入 `singularity-2.4.3` 依次执行 `configure && make && make install` 命令，`configure` 命令部分参数如下：
+
+```bash
+./configure --prefix=/home/users/hzhou/soft/singularity CPPFLAGS='-I/home/users/hzhou/soft/lib64 -L/home/users/hzhou/soft/lib64' LDFLAGS='-L/home/users/hzhou/soft/lib64'
+```
+
+4. `build` 容器需要安装 `squashfs-tools`
+
+:::{note}
+该版本无法从 docker-daemon 中直接构建镜像
+:::
 
 ## 语法
 

@@ -119,7 +119,7 @@ wsl -u root service ssh start
 :align: center
 ```
 
-### 参考
+## 参考
 
 - [XShell 初次连接 WSL2 教程](https://blog.csdn.net/qq_42437577/article/details/110664557)
 - [开机启动 WSL2 的 SSHD 服务](http://lyallchan.github.io/2021/01/24/%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8WSL2%E7%9A%84SSHD%E6%9C%8D%E5%8A%A1/)

@@ -363,3 +363,14 @@ ENV PATH="/home/hzhou/anaconda3/envs/gvasp/bin:${PATH}"
 
 CMD ["/usr/bin/bash"]
 ```
+
+## 问题记录
+
+- CentOS6 镜像容器无法启动，报 139 错误
+
+解决办法：在 .wslconfig 文件中增加以下内容重启可解决
+
+```bash
+[wsl2]
+kernelCommandLine = vsyscall=emulate
+```

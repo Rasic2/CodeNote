@@ -8,7 +8,6 @@
    :caption: 目录
 
    development/wsl.md
-   development/linux.md
    development/git.md
    development/docker.md
    development/apptainer.md

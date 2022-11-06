@@ -124,10 +124,6 @@ rm -rf glibc-xx
 
 `ldd` 命令用于打印程序或者库文件所依赖的共享库列表。
 
-### 参考
-
-- [ldd 命令详解](https://blog.csdn.net/f_carey/article/details/109686310)
-
 ## strace 命令
 
 `strace` 是一个可用于诊断、调试和教学的 Linux 用户空间跟踪器。我们用它来监控用户空间进程和内核的交互，比如系统调用、信号传递、进程状态变更等。
@@ -149,10 +145,6 @@ strace -t CMD
 ### 记录原因
 
 我用它查看过 `whoami` 执行未成功的问题，最后定位到的原因是缺少 `libnss_files.so.2` 这个动态库。
-
-### 参考
-
-- [strace 命令详解](https://www.cnblogs.com/machangwei-8/p/10388883.html)
 
 ## LOGO 制作
 
@@ -227,10 +219,6 @@ ssh -N -L 8080:localhost:12345 <user_name>@<host_ip>
 
 4. 本地打开 http://localhost:8080/ 使用 jupyter notebook
 
-### 参考
-
-- [通过 ssh 远程使用服务器 jupyter notebook](https://blog.csdn.net/qq_34769162/article/details/107947034)
-
 ## VSCode 远程开发（Shell）
 
 1. 安装 `Remote SSH` 插件，进行 SSH 连接配置，主要是配置 `.ssh/config` 文件
@@ -241,12 +229,6 @@ ssh -N -L 8080:localhost:12345 <user_name>@<host_ip>
 - shellman：语法提示（本地）
 - shellcheck：语法检查（远程）
 - Code Runner：程序运行工具（远程）
-
-### 参考
-
-- [VScode 远程开发 shell 远程编写调试](https://blog.csdn.net/u010953692/article/details/103324732)
-
-- [VS Code 搭建远程调试 Shell 环境（Remote Linux）](https://www.cnblogs.com/testopsfeng/p/13945846.html)
 
 ## 问题记录
 
@@ -268,4 +250,9 @@ ssh user@ip -i id_rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
 
 ### 参考
 
+- [ldd 命令详解](https://blog.csdn.net/f_carey/article/details/109686310)
+- [strace 命令详解](https://www.cnblogs.com/machangwei-8/p/10388883.html)
 - [SSH 免密失败并报错：no mutual signature algorithm](https://blog.csdn.net/qq_41765918/article/details/126837789)
+- [通过 ssh 远程使用服务器 jupyter notebook](https://blog.csdn.net/qq_34769162/article/details/107947034)
+- [VSCode 远程开发 shell 远程编写调试](https://blog.csdn.net/u010953692/article/details/103324732)
+- [VSCode 搭建远程调试 Shell 环境（Remote Linux）](https://www.cnblogs.com/testopsfeng/p/13945846.html)

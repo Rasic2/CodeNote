@@ -56,7 +56,7 @@ lib64/
 4. `build` 容器需要安装 `squashfs-tools`
 
 :::{note}
-该版本无法从 docker-daemon 中直接构建镜像
+该版本无法从 docker-daemon 中直接构建镜像；由于系统内核版本较低，更高版本的 singularity 无法安装（NO_NEW_PRIVS）
 :::
 
 ## 语法

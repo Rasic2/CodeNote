@@ -9,6 +9,7 @@
 
    language.rst
    markup.md
+   linux.md
    development.rst
    math.md
    chemistry.rst

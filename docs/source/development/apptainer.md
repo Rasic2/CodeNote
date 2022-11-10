@@ -102,3 +102,13 @@ apptainer exec vasp_5.4.4 /opt/vasp/bin/vasp_gam
 ```bash
 apptainer exec --bind $SRC/pot:$DEST/pot gvasp gvasp submit opt
 ```
+
+## 问题解决
+
+- `multiprocessing` 模块运行时报 `[Errno 30] Read-only file system` 和 `[Errno 13] Permission denied` 错误
+
+解决：挂载 `/dev/shm` 符号链接，添加 `--writable-tmpfs` 参数
+
+```bash
+apptainer exec --bind /run/shm:/dev/shm --writable-tmpfs $HOME/software/gvasp gvasp sum
+```

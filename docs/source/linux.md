@@ -248,7 +248,7 @@ ssh -N -L 8080:localhost:12345 <user_name>@<host_ip>
 ssh user@ip -i id_rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
 ```
 
-### 参考
+## 参考
 
 - [ldd 命令详解](https://blog.csdn.net/f_carey/article/details/109686310)
 - [strace 命令详解](https://www.cnblogs.com/machangwei-8/p/10388883.html)

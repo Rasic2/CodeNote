@@ -374,3 +374,7 @@ CMD ["/usr/bin/bash"]
 [wsl2]
 kernelCommandLine = vsyscall=emulate
 ```
+
+- warning: setlocale: LC_ALL: cannot change locale
+
+解决办法：制作镜像时加入 `/etc/locale.conf` 文件

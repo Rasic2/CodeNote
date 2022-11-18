@@ -99,3 +99,9 @@ LaTeX（$\LaTeX$，音译“拉泰赫”）是一种基于 $\TeX$ 的排版系�
 ### LaTeX 常用网站
 
 - [在线 $\LaTeX$ 公式编辑器](https://www.latexlive.com/home)
+
+## reSturcturedText
+
+| Grammar        | Symbol |
+| -------------- | :----: |
+| H\ :sub:`2`\ O | $H_2O$ |

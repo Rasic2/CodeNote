@@ -100,14 +100,6 @@ Cu 0
 SDD
 ```
 
-### 参考
-
-- [基组的简要介绍及选择建议](https://zhuanlan.zhihu.com/p/363177076)
-- [详解 Gaussian 中混合基组、自定义基组和赝势基组的输入](http://sobereva.com/60)
-- [Gaussian 教程 | 使用基组和赝势](http://blog.molcalx.com.cn/2017/11/30/gaussian-tutorial-basis-set.html)
-- [BSE 基组数据库](https://www.basissetexchange.org/)
-- [Stuttgart 系列赝势](http://www.tc.uni-koeln.de/PP/clickpse.en.html)
-
 ## 限制性优化
 
 推荐在`冗余内坐标`（关键词 opt=modredundant）下进行限制优化，因为此种方法可以随意定义限制的内坐标，并不仅限于输入文件里出现的内坐标。
@@ -131,6 +123,29 @@ H               0.00000000   -0.58397589    0.44324751
 F 前面写两个原子序号，代表冻结键长；F 前面写三个原子序号，代表冻结键角；F 前面写四个原子序号，代表冻结二面角。
 :::
 
+## GaussView
+
+### 修改部分原子的显示方式
+
+1. 给原子分组，`Tools-Atom Groups`，调整 `Atom Group Class` 为 `ONIOM Layer`，最多划分为三组
+
+```{image} gv1.png
+:width: 500
+:align: center
+```
+
+2. 默认的分组显示方式在 `View-Default Format`，可自行修改
+
+```{image} gv2.png
+:width: 500
+:align: center
+```
+
 ### 参考
 
+- [基组的简要介绍及选择建议](https://zhuanlan.zhihu.com/p/363177076)
+- [详解 Gaussian 中混合基组、自定义基组和赝势基组的输入](http://sobereva.com/60)
+- [Gaussian 教程 | 使用基组和赝势](http://blog.molcalx.com.cn/2017/11/30/gaussian-tutorial-basis-set.html)
+- [BSE 基组数据库](https://www.basissetexchange.org/)
+- [Stuttgart 系列赝势](http://www.tc.uni-koeln.de/PP/clickpse.en.html)
 - [在 Gaussian 中做限制性优化的方法](http://bbs.keinsci.com/thread-9022-1-1.html)

@@ -120,6 +120,10 @@ make -j 32 && make install
 rm -rf glibc-xx
 ```
 
+## cp 命令
+
+`cp -d` 复制软链接
+
 ## ldd 命令
 
 `ldd` 命令用于打印程序或者库文件所依赖的共享库列表。

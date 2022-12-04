@@ -1,4 +1,4 @@
-Mirror Modify
+修改镜像
 =================================
 
 Conda Mirror

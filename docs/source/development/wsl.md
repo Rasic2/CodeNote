@@ -85,7 +85,7 @@ sudo dpkg-reconfigure openssh-serve
 wsl -u root service ssh start
 ```
 
-2. 选择此电脑-管理-任务计划程序-创建基本任务，将该脚本添加到计划任务中，步骤如下：
+2. 选择此电脑-管理-任务计划程序-创建基本任务，将该脚本添加到计划任务中，步骤如下（不要直接将脚本路径写在 `powershell.exe` 后面）：
 
 ```{image} wsl1.png
 :width: 500

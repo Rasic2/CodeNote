@@ -10,3 +10,5 @@
 :width: 500
 :align: center
 ```
+
+- `VSCode` 中的 `Markdown Preview Enhanced` 插件出现无法激活的现象时，卸载插件-关闭 VSCode-打开 VSCode-安装插件，不要直接在 VSCode 中重新加载！！！

@@ -8,3 +8,4 @@ Python 教程
    :caption: 目录
 
    matplotlib.md
+   pyquery.md

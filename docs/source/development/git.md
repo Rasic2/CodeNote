@@ -92,6 +92,14 @@ git stash list
 git stash pop
 ```
 
+### 分支相关
+
+- 删除本地分支
+
+```bash
+git branch -d branch_name
+```
+
 ### tag 相关
 
 - 查看已有的 tag

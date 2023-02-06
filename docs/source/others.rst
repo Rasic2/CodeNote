@@ -6,3 +6,4 @@
    :caption: 目录
 
    others/qbittorrent.md
+   others/telegram.md

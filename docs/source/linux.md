@@ -120,19 +120,19 @@ make -j 32 && make install
 rm -rf glibc-xx
 ```
 
-## cp 命令
+## 常用命令
+
+### cp 命令
 
 `cp -d` 复制软链接
 
-## ldd 命令
+### ldd 命令
 
 `ldd` 命令用于打印程序或者库文件所依赖的共享库列表。
 
-## strace 命令
+### strace 命令
 
 `strace` 是一个可用于诊断、调试和教学的 Linux 用户空间跟踪器。我们用它来监控用户空间进程和内核的交互，比如系统调用、信号传递、进程状态变更等。
-
-### 常用语法
 
 - 追踪每一种系统调用的耗时、次数和失败数
 
@@ -146,9 +146,15 @@ strace -c CMD
 strace -t CMD
 ```
 
-### 记录原因
+- 记录原因
 
 我用它查看过 `whoami` 执行未成功的问题，最后定位到的原因是缺少 `libnss_files.so.2` 这个动态库。
+
+### 查找重复文件
+
+```bash
+find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate
+```
 
 ## LOGO 制作
 

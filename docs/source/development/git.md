@@ -24,6 +24,12 @@ git config -l
 git config --global color.ui true
 ```
 
+- 配置编辑器为 vim
+
+```bash
+git config --global core.editor vim
+```
+
 - 给远程仓库地址添加别名
 
 ```bash
@@ -58,6 +64,12 @@ git commit -m "comment"
 
 ```bash
 git log
+```
+
+- 修改 commit 的最后一条注释
+
+```bash
+git commit --amend
 ```
 
 - 将本地仓库的内容同步到远程

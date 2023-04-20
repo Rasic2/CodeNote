@@ -112,6 +112,18 @@ docker system df
 docker builder prune --filter 'until=48h'
 ```
 
+- 给镜像打标签（例如，将镜像 ubuntu:15.10 标记为 runoob/ubuntu:v3 镜像）
+
+```bash
+docker tag ubuntu:15.10 runoob/ubuntu:v3
+```
+
+- 上传镜像
+
+```bash
+docker push image:tag
+```
+
 ## Linux 基础镜像组件（rootfs）
 
 1. `bin` 目录

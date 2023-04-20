@@ -8,5 +8,6 @@
    :caption: 目录
 
    language/bash.md
+   language/vi.md
    language/powershell.md
    language/python.rst

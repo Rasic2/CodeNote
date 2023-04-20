@@ -64,6 +64,8 @@ git commit -m "comment"
 
 ```bash
 git log
+git log --stat    # 查看所有提交记录的修改文件信息
+git log -p file   # 查看某个文件的修改历史
 ```
 
 - 修改 commit 的最后一条注释

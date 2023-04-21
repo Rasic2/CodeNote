@@ -7,7 +7,7 @@
 - 根据命令升级版本号；
 - 自动替换项目相关文件中的版本信息；
 - 自动创建一次 Git 提交；
-- 为这一次提交打上版本升级的标签；
+- 为本次提交打上版本升级的标签；
 
 ## 包安装
 
@@ -23,13 +23,15 @@ pip install bumpversion
 
 ```ini
 [bumpversion]
-current_version = 0.1.4.beta
-parse = (?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)\.(?P<release>.*)
-serialize =
+current_version = 0.1.4
+parse = (?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)(\.(?P<release>.*))?
+serialize = 
 	{major}.{minor}.{patch}.{release}
+	{major}.{minor}.{patch}
 
 [bumpversion:part:release]
-values =
+optional_value = gamma
+values = 
 	alpha
 	beta
 	gamma

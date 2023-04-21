@@ -1,18 +1,18 @@
-Package Production
-===================
+制作第三方包
+==============
 
-PyPi wheel
------------
+PyPi wheel 制作
+----------------
 
-`PyPi <https://pypi.org/>`_ wheel is very simple to production, that you only need to write the correct :file:`setup.py`, and run the following command:
+`PyPi <https://pypi.org/>`_ wheel 非常容易制作, 只需要正确的书写 :file:`setup.py` 文件即可，之后运行下述命令:
 
 .. code-block:: bash
 
     python3 setup.py sdist bdist_wheel
 
-then both :file:`*.tar.gz` and :file:`.whl` will occur at the :file:`./dist` directory.
+然后， :file:`*.tar.gz` 和 :file:`.whl` 就会暴露在 :file:`./dist` 目录下。
 
-It can be seen that, whether or not write the `correct` :file:`setup.py` will determine the success of the production, and :file:`setup.py` example can see below:
+`能否正确书写` :file:`setup.py` 决定了包制作过程的成败， :file:`setup.py` 样例如下所示：
 
 .. code-block:: python
 
@@ -112,7 +112,7 @@ Then you can upload the `wheel` to `PyPi <https://pypi.org/>`_ use such command:
 
     twine upload dist/*
 
-Conda package
+Conda 包制作
 --------------
 
 Relative `PyPi <https://pypi.org/>`_ package production, production of conda package is very disgusting!!! Because you will meat the dependency problem every where.
@@ -212,10 +212,10 @@ Install package can do this:
 .. attention::
     When install the package, noticed that we used the compilers in **conda-forge** channel, so we particularly add this channel to install the package, otherwise conflicts will occur.
 
-包安装
-======
+第三方包安装
+============
 
-- 使用 conda 安装包
+- 安装 conda 包
 
 .. code-block:: bash
 

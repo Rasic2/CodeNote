@@ -14,6 +14,7 @@
    development/apptainer.md
    development/mirror.rst
    development/package.rst
+   development/version.md
    development/migration.md
    development/sphinx.md
    development/codecov.md

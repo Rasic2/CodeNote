@@ -137,7 +137,8 @@ git tag -a v0.1.1 COMMIT_ID -m "message"
 - 删除已有的 tag（如 v0.0.1）
 
 ```bash
-git tag -d v0.0.1
+git tag -d v0.0.1  # 删除本地 tag
+git push origin :refs/tags/v0.0.1  # 删除远程 tag
 ```
 
 - 将本地 tag 提交到远程仓库

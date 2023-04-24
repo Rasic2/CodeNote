@@ -7,4 +7,5 @@
 
    others/qbittorrent.md
    others/telegram.md
+   others/win.md
    others/mac.md

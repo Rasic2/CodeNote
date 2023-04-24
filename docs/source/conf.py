@@ -18,11 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'OnlineNote'
-copyright = '2022, Hui Zhou'
+copyright = '2022-2023, Hui Zhou'
 author = 'Hui Zhou'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '2023.04.24'
 
 
 # -- General configuration ---------------------------------------------------

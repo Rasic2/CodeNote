@@ -15,4 +15,4 @@ jobs:
           date_now=$(date +"%Y.%m.%d")
           new_tag=$(echo -e "v${date_now}")
           git tag ${new_tag}
-          git push origin master
+          git push --tags

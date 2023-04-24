@@ -6,13 +6,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # - name: Set up Python 3.9
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: "3.9"
       - name: List Tags
         run: |
           date_now=$(date +"%Y.%m.%d")
           new_tag=$(echo -e "v${date_now}")
+          git fetch origin --tags  # obtain the tags from remote
+          exist=$(git tag | grep ${new_tag} | wc -l)
+          if [ ${exist} -eq 1 ];then
+            git tag -d ${new_tag}  # delete tag local
+            git push origin :refs/tags/${new_tag}  # delete tag remote
+          fi
           git tag ${new_tag}
           git push origin --tags
+        

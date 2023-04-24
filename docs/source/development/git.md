@@ -147,6 +147,12 @@ git push origin :refs/tags/v0.0.1  # 删除远程 tag
 git push origin --tags
 ```
 
+- 从远程仓库获取 tag
+
+```bash
+git fetch origin --tags
+```
+
 ## Git 删除大文件历史
 
 当使用 Git 进行版本管理时，可能会不慎将一些库文件、配置文件或特大文件加入版本管理而使得 `.git` 文件夹占用空间过大。因此特别有必要对一些 git 历史进行重写，删除不想被 git 追踪的文件，官方推荐使用的工具是 `git-filter-repo`（可使用 pip 或 conda 进行安装），下面将对该工具的一些具体用法进行说明。

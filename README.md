@@ -15,10 +15,12 @@ This `OnlineNote` is a notebook mainly record the knowledge, problem and solutio
 
 ## Contents
 
-- Code Development
+- Programming Language
 - Markup Language
-- Computational Chemistry
+- Linux Operation
+- Project Development
 - Math related
+- Computational Chemistry
 - Others
 
-Copyright © 2022 `Hui Zhou` All rights reserved.
+Copyright © 2022-2023 `Hui Zhou` All rights reserved.

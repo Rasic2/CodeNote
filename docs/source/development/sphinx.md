@@ -84,7 +84,7 @@ release = '0.0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'myst_parser']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'myst_parser', 'sphinxcontrib.jquery']
 
 myst_enable_extensions = [
     "amsmath",
@@ -130,6 +130,10 @@ html_static_path = ['_static']
 
 :::{note}
 如果你在 `myst_enable_extensions` 中列出了 `linkify`，请提前安装 `myst-parser[linkify]`。
+:::
+
+:::{important}
+`extensions` 中需要列出 `sphinxcontrib.jquery`，否则无法在页面中进行切换版本和搜索操作。
 :::
 
 ### reStructuredText 语法
@@ -279,3 +283,7 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinxcontrib.inksca
 3. 修改 `requirements.txt` 安装该扩展；
 
 4. 至此，便可以实现 `pdf` 格式的文档下载。
+
+## 参考资料
+
+- [jQuery not loaded automatically with sphinxcontrib-jquery 4.0.0](https://github.com/readthedocs/sphinx_rtd_theme/issues/1452)

@@ -6,13 +6,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.9"
+      # - name: Set up Python 3.9
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: "3.9"
       - name: List Tags
         run: |
           date_now=$(date +"%Y.%m.%d")
           new_tag=$(echo -e "v${date_now}")
           git tag ${new_tag}
-          git push --tags
+          git push origin --tags

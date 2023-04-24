@@ -13,5 +13,7 @@ jobs:
       - name: List Tags
         run: |
           date_now=$(date +"%Y.%m.%d")
-          echo -e "${date_now}"
-          git tag
+          new_tag=$(echo -e "v${date_now}")
+          git tag ${new_tag}
+          git remote add origin git@github.com:Rasic2/CodeNote.git
+          git push origin master

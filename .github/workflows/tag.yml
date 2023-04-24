@@ -12,4 +12,6 @@ jobs:
           python-version: "3.9"
       - name: List Tags
         run: |
+          date_now=$(date +"%Y.%m.%d")
+          echo -e "${date_now}"
           git tag

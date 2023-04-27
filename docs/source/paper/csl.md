@@ -48,7 +48,7 @@ Github 地址：https://github.com/citation-style-language
 ```xml
 <macro name="author">
   <names variable="author" suffix=".">
-    <name sort-separator=" " initialize-with=". " name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"/>
+    <name sort-separator=", " initialize-with=". " name-as-sort-order="all" delimiter="; " delimiter-precedes-last="always" et-al-min="10" et-al-use-first="10" delimiter-precedes-et-al="never"/>
     <label form="short" prefix=", " text-case="capitalize-first"/>
   </names>
 </macro>
@@ -56,7 +56,7 @@ Github 地址：https://github.com/citation-style-language
 
 示例效果为：
 
-Li Z., Werner K., Chen L., Jia A., Qian K., Zhong J., You R., Wu L., Zhang L., Pan H., Wu X., Gong X., Shaikhutdinov S., Huang W., Freund H.
+Li, Z.; Werner, K.; Chen, L.; Jia, A.; Qian, K.; Zhong, J.; You, R.; Wu, L.; Zhang, L.; Pan, H., et al.
 
 具体的属性与对应效果如下所述：
 
@@ -66,6 +66,13 @@ Li Z., Werner K., Chen L., Jia A., Qian K., Zhong J., You R., Wu L., Zhang L., P
 - `<name name-as-sort-order="all">`：`所有的`作者名字都遵循姓在前，名在后的顺序
 - `<name delimiter=", ">`：作者姓名以 `, `分割
 - `<name delimiter-precedes-last="always">`：最后一个作者名字前`总是`有分隔符（如果没有 `and`，该参数无效）
+- `<name et-al-min="10">`：当作者数达到 `10` 个时，启用 et-al 缩写
+- `<name et-al-use-first="10">`：当作者数达到 `et-al-min` 时，第 `10` 个之后的名字用 et-al 代替
+- `<name delimiter-precedes-et-al="never">`：`取消` et-al 前面的分隔符
+
+:::{note}
+此处 et-al 前面存在 `,` 分隔符，是 [locale-terms-term](#参考文献中定制本地化字符串) 元素定义的缘故
+:::
 
 ### 正文中的引用编号格式
 
@@ -163,4 +170,18 @@ _Chemistry – A European Journal._
 
 - `font-style="normal"`：设置字体`正常`
 
-<!-- Li Z., Werner K., Chen L., Jia A., Qian K., Zhong J., You R., Wu L., Zhang L., Pan H., Wu X., Gong X., Shaikhutdinov S., Huang W., Freund H. Interaction of Hydrogen with Ceria: Hydroxylation, Reduction, and Hydride Formation on the Surface and in the Bulk. Chemistry – A European Journal. 2021, 27(16): 5268–5276. -->
+### 参考文献中定制本地化字符串
+
+通过修改 `xml-style-locale-terms-<term>` 元素实现。
+
+```xml
+<locale xml:lang="en">
+  <terms>
+    <term name="et-al">, et al.</term>
+  </terms>
+</locale>
+```
+
+示例效果为：
+
+, et al.

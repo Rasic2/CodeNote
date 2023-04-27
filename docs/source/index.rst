@@ -13,4 +13,5 @@
    development.rst
    math.md
    chemistry.rst
+   paper.rst
    others.rst

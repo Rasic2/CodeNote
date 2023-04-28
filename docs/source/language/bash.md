@@ -104,7 +104,25 @@ do
 done
 ```
 
-## Bash 字符串删除
+## Bash 变量替换
+
+使用下述命令可以实现字符串的变量替换：
+
+```bash
+${string/substring/replacement} # 替换第一个匹配项
+${string//substring/replacement} # 替换全部匹配项
+```
+
+具体效果如下所示：
+
+```bash
+EXEC=/opt/vasp/bin/vasp_std
+${EXEC/vasp_std/vasp_gam} => /opt/vasp/bin/vasp_gam
+```
+
+:::{note}
+当省略第二个 `/` 时，将会把匹配到的字符串从变量中删除
+:::
 
 例如，我们有一个变量 `user`
 
@@ -112,7 +130,7 @@ done
 user=root:x:0:0:root:/root:/bin/bash
 ```
 
-可以使用下述的命令实现字符串删除获得字串；
+使用下述命令会发生字符串的删除；
 
 ```bash
 > ${user/r*t}
@@ -134,7 +152,7 @@ user=root:x:0:0:root:/root:/bin/bash
 > :x:0:0:root:/root:/bin/bash
 ```
 
-## Bash 变量替换
+## Bash 字符串删除
 
 假设我们定义了一个变量 `file`
 
@@ -142,7 +160,7 @@ user=root:x:0:0:root:/root:/bin/bash
 file=/dir1/dir2/dir3/my.file.txt
 ```
 
-我们可用 `${}` 来进行变量替换获得不同的值：
+我们可用 `${var#}/${var%}` 来进行字符串删除获得不同的值：
 
 ```bash
 > ${file#_/}
@@ -291,3 +309,7 @@ _gvasp_submit() {
 ```
 
 定义好的 `bash-completion` 脚本在 `~/.bashrc` 中定义并通过 `source` 命令执行即可。
+
+## 参考资料
+
+- [Manipulating Variables](https://tldp.org/LDP/abs/html/string-manipulation.html)

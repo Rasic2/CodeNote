@@ -9,3 +9,4 @@ Python 教程
 
    matplotlib.md
    pyquery.md
+   pytest.md

@@ -108,6 +108,13 @@ git stash pop
 
 ### 分支相关
 
+- 基于分支新建分支
+
+```bash
+git checkout -b new_branch  # 基于当下分支
+git checkout -b new_branch old_branch  # 基于已有分支
+```
+
 - 删除本地分支
 
 ```bash

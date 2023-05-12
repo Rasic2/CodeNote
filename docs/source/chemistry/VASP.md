@@ -72,6 +72,14 @@ NBANDS 决定计算中的 KS 或 QP 轨道数目。
 
 3. [NBO 项目](https://github.com/jrschmidt2/periodic-NBO)
 
+## CM5 电荷计算
+
+根据本人撰写的 [README](https://github.com/Rasic2/CM5-charge/blob/master/README.md) 配置好相应的软件和环境，并确保工作目录下存在 `AECCAR0 AECCAR2 CHGCAR OUTCAR POSCAR POTCAR` 文件，即可通过 `CM5` 命令来开展 CM5 电荷的计算，相应结果储存在 **charge_CM5** 文件中。
+
+:::{important}
+`job_control.txt` 文件中的 `atomic densities` 路径的最后一个 `/` 不能省略，具体原因看[这里](https://github.com/pzarabadip/chargemol-light/issues/1)
+:::
+
 ## 报错解决方案
 
 - forrtl: severe (174): SIGSEGV, segmentation fault occurred

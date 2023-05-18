@@ -121,6 +121,13 @@ git checkout -b new_branch old_branch  # 基于已有分支
 git branch -d branch_name
 ```
 
+- 合并分支
+
+```bash
+git merge branch_name
+git rebase branch_name  # 变基
+```
+
 ### tag 相关
 
 - 查看已有的 tag
@@ -159,6 +166,48 @@ git push origin --tags
 ```bash
 git fetch origin --tags
 ```
+
+### 历史相关
+
+- 合并分支（变基）
+
+```bash
+git rebase branch  # 区别于 git merge，该命令会删除原有 commit，新建 commit
+```
+
+- 梳理提交历史
+
+```bash
+git rebase -i HEAD~num  # 进入交互模式
+
+- pick
+
+重新安排 pick 命令的顺序会更改提交的顺序。如果选择不包括提交，则应删除整行。
+
+- reword
+
+使用后会提供更改提交信息的机会，提交所做的任何更改均不受影响。
+
+- edit
+
+添加或修改提交，可以将大型提交拆分为较小的提交，或者删除在提交中所做的错误更改。
+
+- squash
+
+该命令可以将两个或多个提交合并为一个提交。提交被压缩到其上方的提交中，有机会重新编写描述这两个更改的新提交消息。
+
+- fixup
+
+与 squash 类似，但提交仅合并到其上方的提交中，并且较早提交的消息用于描述所有更改。
+
+- exec
+
+可以对提交运行任意的 Shell 命令。
+```
+
+:::{note}
+重新推送到远程仓库时，需要加上 `--force-with-lease`，不建议直接用 `--force`，详情可看[这里](https://blog.walterlv.com/post/safe-push-using-force-with-lease.html)。
+:::
 
 ## Git 删除大文件历史
 
@@ -202,3 +251,7 @@ git filter-repo --path foo.zip --invert-paths
 [4. 细读 Git | 让你弄懂 origin、HEAD、FETCH_HEAD 相关内容](https://developer.aliyun.com/article/919354)
 
 [5. GitHub fork 与 pull request](https://blog.csdn.net/benben0729/article/details/83031135)
+
+[6. git rebase，看这一篇就够了](https://juejin.cn/post/6969101234338791432)
+
+[7. 【git 整理提交】git rebase -i 命令详解](https://blog.csdn.net/the_power/article/details/104651772)

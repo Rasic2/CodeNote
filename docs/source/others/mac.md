@@ -1,5 +1,26 @@
 # MAC 系统相关
 
+## On My ZSH 相关
+
+### command-not-found 配置
+
+1. 使用 `brew` 安装 `command-not-found` 工具
+
+```bash
+brew tap homebrew/command-not-found
+```
+
+2. 在 `.zshrc` 文件中添加 `command-not-found` 插件
+
+```text
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git command-not-found)
+```
+
 ## dmg 格式文件查看
 
 根据下述步骤可以查看 dmg 格式文件（压缩文件）里面包含的具体文件内容：

@@ -1,6 +1,6 @@
 # MAC 系统相关
 
-## On My ZSH 相关
+## on-my-zsh 相关
 
 ### command-not-found 配置
 
@@ -19,6 +19,30 @@ brew tap homebrew/command-not-found
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git command-not-found)
+```
+
+### conda 命令自动补全
+
+1、下载 `conda-zsh-completion` 插件
+
+```bash
+git clone https://github.com/esc/conda-zsh-completion $ZSH_CUSTOM/plugins/conda-zsh-completion
+```
+
+2、修改 `.zshrc` 文件,在文件中添加 `fpath` 路径
+
+```bash
+plugins=(git command-not-found)
+
+fpath+=$ZSH_CUSTOM/plugins/conda-zsh-completion
+
+source $ZSH/oh-my-zsh.sh
+```
+
+3、使修改生效
+
+```bash
+source ~/.zshrc
 ```
 
 ## dmg 格式文件查看
@@ -48,6 +72,8 @@ Gitea 仓库地址：https://icrack.day/pdfm
 2. 将虚拟机系统中不想共享到 MAC 系统中的文件移动到上述文件夹中即可避免映射（需要管理员权限）
 
 ## 参考资料
+
+- [ubuntu 下 conda 在 bash 和 zsh 终端下的自动补全设置](https://blog.csdn.net/zhanghm1995/article/details/120010254)
 
 - [Mac 下复制 dmg 文件内的内容](https://blog.csdn.net/iteye_11434/article/details/82208921)
 

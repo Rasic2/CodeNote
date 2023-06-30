@@ -72,6 +72,7 @@ git log -p file   # 查看某个文件的修改历史
 
 ```bash
 git commit --amend
+git commit --amend --author "qwer <qwer@qq.com>" --no-edit
 ```
 
 - 将本地仓库的内容同步到远程

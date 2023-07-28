@@ -31,6 +31,12 @@ docker build -t vasp:5.4.4 .
 
 最后的 `.` 表示 Dockerfile 在当前目录下面。
 
+- 将容器打包为一个镜像
+
+```bash
+docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+```
+
 - 以某个镜像（IMAGE）启动一个容器，并在容器内执行 bash 命令
 
 ```bash

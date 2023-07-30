@@ -6,10 +6,10 @@
 
 执行 `sudo` 命令后，仍然报 `Operation not permitted` 错误，与 MAC 系统的 **SIP 机制（System Integrity Protection）**有关
 
-> 解决方案
->
-> - 关闭 SIP（不推荐）
-> - 使用 brew 重新安装软件，修改自定义软件的目录
+**解决方案**
+
+- 关闭 SIP（不推荐）
+- 使用 brew 重新安装软件，修改自定义软件的目
 
 ### locate 命令
 
@@ -71,7 +71,7 @@ fpath+=$ZSH_CUSTOM/plugins/conda-zsh-completion
 source $ZSH/oh-my-zsh.sh
 ```
 
-3、使修改生效
+3、将下述命令写到 `～/.bashrc` 文件中，使修改生效
 
 ```bash
 source ~/.zshrc

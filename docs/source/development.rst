@@ -9,6 +9,7 @@
 
    development/wsl.md
    development/brew.md
+   development/conda.md
    development/git.md
    development/docker.md
    development/apptainer.md

@@ -1,5 +1,37 @@
 # MAC 系统相关
 
+## 命令行相关
+
+### sudo 命令
+
+执行 `sudo` 命令后，仍然报 `Operation not permitted` 错误，与 MAC 系统的 **SIP 机制（System Integrity Protection）**有关
+
+**解决方案**
+
+- 关闭 SIP（不推荐）
+- 使用 brew 重新安装软件，修改自定义软件的目
+
+### locate 命令
+
+执行 `locate` 命令，出现下述提示后：
+
+```
+WARNING: The locate database (/var/db/locate.database) does not exist.
+To create the database, run the following command:
+
+  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
+Please be aware that the database can take some time to generate; once
+the database has been created, this message will no longer appear.
+```
+
+依次执行下述命令：
+
+```bash
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+sudo /usr/libexec/locate.updatedb
+```
+
 ## on-my-zsh 相关
 
 ### command-not-found 配置
@@ -39,7 +71,7 @@ fpath+=$ZSH_CUSTOM/plugins/conda-zsh-completion
 source $ZSH/oh-my-zsh.sh
 ```
 
-3、使修改生效
+3、将下述命令写到 `～/.bashrc` 文件中，使修改生效
 
 ```bash
 source ~/.zshrc
@@ -161,3 +193,7 @@ launchctl load -w *.plist  #加载定时任务
 - [Mac 中的定时任务](https://cloud.tencent.com/developer/article/2208861)
 
 - [Mac 创建定时任务](https://developer.aliyun.com/article/970774)
+
+- [Mac 下 locate 命令使用问题](https://blog.csdn.net/aiyou3665/article/details/101434281)
+
+- [Mac 权限问题，operation not permitted](https://zhuanlan.zhihu.com/p/393796032)

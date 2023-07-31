@@ -122,6 +122,12 @@ git checkout -b new_branch old_branch  # 基于已有分支
 git branch -d branch_name
 ```
 
+- 重命名分支
+
+```bash
+git branch -m new_branch_name
+```
+
 - 合并分支
 
 ```bash

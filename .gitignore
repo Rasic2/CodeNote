@@ -2,3 +2,6 @@
 .vscode
 /docs/build/
 /docs/source/_templates/
+/node_modules/
+/package.json
+/package-lock.json

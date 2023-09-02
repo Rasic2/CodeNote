@@ -216,6 +216,27 @@ git rebase -i HEAD~num  # 进入交互模式
 重新推送到远程仓库时，需要加上 `--force-with-lease`，不建议直接用 `--force`，详情可看[这里](https://blog.walterlv.com/post/safe-push-using-force-with-lease.html)。
 :::
 
+- 将一个 commit 拆分成多个
+
+依次执行如下步骤：
+
+```bash
+git checkout -b new_branch_name commit_id  # 想拆分 commit 的版本号
+git reset HEAD^  # 撤销上一个 commit 到工作区
+git add some_files && git commit -m ""  # 新建多个 commit
+git checkout branch  # 切换到想更改历史的分支
+git rebase new_branch_name  # 变基到拆分 commit 的分支即可自动将某个 commit 拆分成多个
+```
+
+- 版本回退
+
+```bash
+git reset --hard commit_id  # 移动HEAD指针，并清空工作区和暂存区（git add）
+git reset --soft commit_id  # 移动HEAD指针，并把版本差异放进暂存区
+git reset --mixed commit_id # 移动HEAD指针，并把版本差异放进工作区
+git reset  # 默认 mixed 模式
+```
+
 ## Git 删除大文件历史
 
 当使用 Git 进行版本管理时，可能会不慎将一些库文件、配置文件或特大文件加入版本管理而使得 `.git` 文件夹占用空间过大。因此特别有必要对一些 git 历史进行重写，删除不想被 git 追踪的文件，官方推荐使用的工具是 `git-filter-repo`（可使用 pip 或 conda 进行安装），下面将对该工具的一些具体用法进行说明。
@@ -262,3 +283,5 @@ git filter-repo --path foo.zip --invert-paths
 [6. git rebase，看这一篇就够了](https://juejin.cn/post/6969101234338791432)
 
 [7. 【git 整理提交】git rebase -i 命令详解](https://blog.csdn.net/the_power/article/details/104651772)
+
+[8. Git Reset 三种模式](https://www.jianshu.com/p/c2ec5f06cf1a)

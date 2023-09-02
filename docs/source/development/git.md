@@ -309,3 +309,5 @@ git filter-repo --path foo.zip --invert-paths
 [7. 【git 整理提交】git rebase -i 命令详解](https://blog.csdn.net/the_power/article/details/104651772)
 
 [8. Git Reset 三种模式](https://www.jianshu.com/p/c2ec5f06cf1a)
+
+[9. Cz 工具集使用介绍 - 规范 Git 提交说明](https://juejin.cn/post/6844903831893966856)

@@ -248,17 +248,52 @@ sudo apt-get update
 sudo apt-get install nodejs npm
 ```
 
-2. 在项目目录下初始化 `cz-conventional-changelog` 适配器
+2. 安装适配器
+
+```bash
+npm install -g cz-conventional-changelog
+```
+
+3. 在项目目录下初始化 `cz-conventional-changelog` 适配器
 
 ```bash
 commitizen init cz-conventional-changelog --save --save-exact
 ```
 
-3. 在 Git 提交时使用 `git cz` 命令
+4. 在 Git 提交时使用 `git cz` 命令
 
 ```bash
 git add .
 git cz
+```
+
+## 自动生成 CHANGELOG
+
+使用 `conventional-changelog` 命令可以自动生成 `CHANGELOG`，要使用该命令，需要以下几个步骤：
+
+1. 安装或者更新 `nodejs` 和 `npm`（Ubuntu 系统默认 `apt` 安装的版本较低，需要使用 `n` 升级到较高的版本）
+
+```bash
+sudo apt-get update
+sudo apt-get install nodejs npm
+sudo npm install -g n
+sudo n stable  # 安装 nodejs stable
+sudo n latest  # 或安装 nodejs latest
+sudo n ls      # 查看已下载的安装版本
+sudo n 18.21.1 # 切换版本
+```
+
+2. 安装 `conventional-changelog-cli`
+
+```bash
+npm install -g conventional-changelog-cli
+```
+
+3. 更新 `CHANGELOG.md`
+
+```bash
+touch CHANGELOG.md  # 首次需手动创建
+conventional-changelog -p angular -i CHANGELOG.md -s
 ```
 
 ## Git 删除大文件历史
@@ -311,3 +346,7 @@ git filter-repo --path foo.zip --invert-paths
 [8. Git Reset 三种模式](https://www.jianshu.com/p/c2ec5f06cf1a)
 
 [9. Cz 工具集使用介绍 - 规范 Git 提交说明](https://juejin.cn/post/6844903831893966856)
+
+[10. git commit 、CHANGELOG 和版本发布的标准自动化](https://zhuanlan.zhihu.com/p/51894196)
+
+[11. Ubuntu 安装最新版本 NodeJs 和 Npm 的方法](https://blog.csdn.net/weixin_55719805/article/details/128094550)

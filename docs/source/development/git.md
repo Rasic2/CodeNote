@@ -293,7 +293,7 @@ npm install -g conventional-changelog-cli
 
 ```bash
 touch CHANGELOG.md  # 首次需手动创建
-conventional-changelog -p angular -i CHANGELOG.md -s
+npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0
 ```
 
 ## Git 删除大文件历史

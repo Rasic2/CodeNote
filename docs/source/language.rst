@@ -11,3 +11,4 @@
    language/vi.md
    language/powershell.md
    language/python.rst
+   language/go.md

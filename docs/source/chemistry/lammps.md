@@ -660,6 +660,35 @@ dump 1 all xtc 1000 file.xtc
 
     根据 `zfactor` 的值放大或缩小输出图片的尺寸。
 
+- **dump ID group-ID custom N file**
+
+  - 语法
+
+  ```bash
+  dump ID group-ID custom N file args
+  ```
+
+  其中，`args` 的可能取值为：`id`, `mol`, `proc`, `procp1`, `type`, `element`, `mass`,
+  `x`, `y`, `z`, `xs`, `ys`, `zs`, `xu`, `yu`, `zu`,
+  `xsu`, `ysu`, `zsu`, `ix`, `iy`, `iz`,
+  `vx`, `vy`, `vz`, `fx`, `fy`, `fz`,
+  `q`, `mux`, `muy`, `muz`, `mu`,
+  `radius`, `diameter`, `omegax`, `omegay`, `omegaz`,
+  `angmomx`, `angmomy`, `angmomz`, `tqx`, `tqy`, `tqz`,
+  `heatflow`, `temperature`,
+  `c_ID`, `c_ID[I]`, `f_ID`, `f_ID[I]`, `v_name`,
+  `i_name`, `d_name`, `i2_name[I]`, `d2_name[I]`
+
+  - id 表示原子 ID
+
+  - type 表示原子类型
+
+  - x,y,z 表示未缩放的原子坐标
+
+  - fx,fy,fz 表示原子受力
+
+  - vx,vy,vz 表示原子速度
+
 ### dump_modify 命令
 
 修改 dump 命令的参数设置。
@@ -762,3 +791,4 @@ full 类型除了上述的 6 项之外，还要在 `atom-ID` 后面加一列 `mo
 - [LAMMPS 翻译系列-dimension 命令](http://www.52souji.net/lammps-command-dimension.html)
 - [LAMMPS 翻译系列-atom-style 命令](http://www.52souji.net/lammps-command-atom-style.html)
 - [lammps 不同类型 data 文件格式对比，以及不同类型 data 文件相互转换方法](https://zhuanlan.zhihu.com/p/420847294)
+- [LAMMPS 学习总结 1](https://blog.csdn.net/weixin_45896923/article/details/116032495)

@@ -785,6 +785,121 @@ charge 类型书写时除了上述的 5 项之外，还要在 `atom-type` 后面
 
 full 类型除了上述的 6 项之外，还要在 `atom-ID` 后面加一列 `molecule-ID`，以及 `x` `y` `z` 后面加 `nx` `ny` `nz` 三列用于周期性原子的定位（可选）。
 
+## LAMMPS 三斜晶胞的定义与转换
+
+### 定义
+
+LAMMPS 支持在三斜晶胞中进行分子动力学模拟，晶胞原点位于 (xlo, ylo, zlo)，由从原点开始的 3 个边缘向量定义：
+
+```
+a = (xhi-xlo, 0, 0)
+b = (xy, yhi-ylo, 0)
+c = (xz, yz, zhi-zlo)
+```
+
+其中，`xy`，`xz`，`yz` 可以是 0.0 或正数或负数，称为“倾斜因子”，代表将最初的正交盒变换为平行六面体的面位移量。
+
+:::{note}
+在 LAMMPS 中，三斜晶胞的边缘向量 **a** 必须位于 _x_ 轴正方向；**b** 必须位于 _xy_ 平面上，且 _y_ 分量严格为正；**c** 可以具有严格正的 _z_ 分量的任何方向。总之，**a**、**b** 和 **c** 必须形成一个完整的右手基。
+:::
+
+### dump 文件中的晶胞输出
+
+对于三斜晶胞，dump 文件输出的是包围三斜晶胞的正交边界盒子，以及三斜晶胞的 3 个倾斜因子`xy`，`xz` 和 `yz`，格式如下：
+
+```
+ITEM: BOX BOUNDS xy xz yz
+xlo_bound xhi_bound xy
+ylo_bound yhi_bound xz
+zlo_bound zhi_bound yz
+```
+
+其中，`_bound` 后缀是为了区别正交晶胞而特意加的，表示 dump 文件输出的并不是“真正的”三斜晶胞，具体定义如下：
+
+```
+xlo_bound = xlo + MIN(0.0,xy,xz,xy+xz)
+xhi_bound = xhi + MAX(0.0,xy,xz,xy+xz)
+ylo_bound = ylo + MIN(0.0,yz)
+yhi_bound = yhi + MAX(0.0,yz)
+zlo_bound = zlo
+zhi_bound = zhi
+```
+
+### 晶胞矩阵转化为 LAMMPS 的三斜晶胞
+
+对于任意的晶胞矩阵（3×3），如果 **A**，**B**，**C** 三个晶胞矢量满足右手基，则可以通过下式将它们转为 LAMMPS 的边缘矢量 **a**，**b**，**c**：
+
+$$
+\begin{pmatrix}
+ a & b & c
+\end{pmatrix} = \begin{pmatrix}
+ a_x & b_x & c_x \\
+ 0   & b_y & c_y \\
+ 0   & 0   & c_z
+\end{pmatrix}
+$$
+
+$$
+\begin{align}
+& a_x = A \\
+& b_x = \mathrm {B} \cdot \hat{\mathrm{A}} = B\cos \gamma \\
+& b_y = |\hat{\mathrm{A}}\times \mathrm{B}| = B\sin \gamma = \sqrt{B^2-b_x^2} \\
+& c_x = \mathrm{C} \cdot \hat{\mathrm{A}} = C \cos \beta \\
+& c_y = \mathrm{C} \cdot (\widehat{\mathrm{A} \times \mathrm{B}}) \times \hat{\mathrm{A}} = \frac{\mathrm{B}\cdot\mathrm{C}-b_xc_x}{b_y} \\
+& c_z = |\mathrm{C} \cdot (\widehat{\mathrm{A} \times \mathrm{B}})| = \sqrt{\mathrm{C}^2-c_x^2-c_y^2} \\
+\end{align}
+$$
+
+Python 代码实现为：
+
+```python
+# coord是从VASP提取的晶格矢量3*3
+coord = np.array(copy.deepcopy(system['box_coord']))
+
+A_hat = coord[0]/math.sqrt(np.sum(np.square(coord[0])))
+AcrossB = np.cross(coord[0],coord[1])
+AcrossB_hat = AcrossB/math.sqrt(np.sum(np.square(AcrossB)))
+
+x = float(math.sqrt(np.sum(np.square(coord[0]))))
+xy = float(np.dot(coord[1],A_hat))
+y = float(math.sqrt(np.sum(np.square(np.cross(A_hat,coord[1])))))
+xz = float(np.dot(coord[2],A_hat))
+yz = float(np.dot(coord[2],np.cross(AcrossB_hat,A_hat)))
+z = float(np.dot(coord[2],AcrossB_hat))
+
+coord = [[x,0,0],[xy,y,0],[xz,yz,z]]
+```
+
+### LAMMPS 晶胞转换为 ASE 晶胞
+
+通过下述代码，ASE 将 LAMMPS 边缘矢量转化为了晶胞矩阵（3×3）：
+
+```python
+def construct_cell(diagdisp, offdiag):
+    """Help function to create an ASE-cell with displacement vector from
+    the lammps coordination system parameters.
+
+    :param diagdisp: cell dimension convoluted with the displacement vector
+    :param offdiag: off-diagonal cell elements
+    :returns: cell and cell displacement vector
+    :rtype: tuple
+    """
+    xlo, xhi, ylo, yhi, zlo, zhi = diagdisp
+    xy, xz, yz = offdiag
+
+    # create ase-cell from lammps-box
+    xhilo = (xhi - xlo) - abs(xy) - abs(xz)
+    yhilo = (yhi - ylo) - abs(yz)
+    zhilo = zhi - zlo
+    celldispx = xlo - min(0, xy) - min(0, xz)
+    celldispy = ylo - min(0, yz)
+    celldispz = zlo
+    cell = np.array([[xhilo, 0, 0], [xy, yhilo, 0], [xz, yz, zhilo]])
+    celldisp = np.array([celldispx, celldispy, celldispz])
+
+    return cell, celldisp
+```
+
 ## 参考
 
 - [LAMMPS—units 命令解析](https://zhuanlan.zhihu.com/p/410687074)
@@ -792,3 +907,5 @@ full 类型除了上述的 6 项之外，还要在 `atom-ID` 后面加一列 `mo
 - [LAMMPS 翻译系列-atom-style 命令](http://www.52souji.net/lammps-command-atom-style.html)
 - [lammps 不同类型 data 文件格式对比，以及不同类型 data 文件相互转换方法](https://zhuanlan.zhihu.com/p/420847294)
 - [LAMMPS 学习总结 1](https://blog.csdn.net/weixin_45896923/article/details/116032495)
+- [8.2.3. Triclinic (non-orthogonal) simulation boxes](https://docs.lammps.org/Howto_triclinic.html)
+- [任意晶格矢量与 Lammps 盒子定义转换](https://zhuanlan.zhihu.com/p/359736837)

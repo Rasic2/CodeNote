@@ -242,6 +242,14 @@ ls | shuf -n 50 | xargs -I {} cp {} DIR
 
 其中，`shuf` 命令随机选择 N 个文件
 
+## awk 命令
+
+- 条件语句
+
+```bash
+awk -F, '{if($5>2000){print $0}}' file
+```
+
 ## Linux 自定义命令补全
 
 实现 Linux 系统下自定义命令的补全需要借助 `bash-completion`，它是对 bash 补全功能的增强，可以实现对参数和包名的补全。

@@ -250,6 +250,14 @@ ls | shuf -n 50 | xargs -I {} cp {} DIR
 awk -F, '{if($5>2000){print $0}}' file
 ```
 
+## sort 命令
+
+- 先将第一列倒排，再将第三列以数值格式倒排
+
+```bash
+sort -k 1,1r -k 3,3nr content
+```
+
 ## Linux 自定义命令补全
 
 实现 Linux 系统下自定义命令的补全需要借助 `bash-completion`，它是对 bash 补全功能的增强，可以实现对参数和包名的补全。

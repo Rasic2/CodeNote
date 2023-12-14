@@ -258,6 +258,14 @@ awk -F, '{if($5>2000){print $0}}' file
 sort -k 1,1r -k 3,3nr content
 ```
 
+## grep 命令
+
+- 多行匹配时去掉分组符号"-"
+
+```bash
+grep -A2 pattern --no-group-separator
+```
+
 ## Linux 自定义命令补全
 
 实现 Linux 系统下自定义命令的补全需要借助 `bash-completion`，它是对 bash 补全功能的增强，可以实现对参数和包名的补全。

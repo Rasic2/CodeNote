@@ -296,6 +296,59 @@ fi
 chmod +x .git/hooks/commit-msg
 ```
 
+## 使用 Git 模版来初始化 hook 钩子
+
+1. **创建一个模板目录：**
+
+   ```bash
+   mkdir -p ~/.git-templates/hooks
+   ```
+
+2. **添加 `commit-msg` 钩子：**
+
+   ```bash
+   vim ~/.git-templates/hooks/commit-msg
+   ```
+
+3. **在钩子文件中添加代码：**
+
+   ```bash
+   #!/bin/bash
+
+   # 提交消息文件
+   COMMIT_MSG_FILE=$1
+
+   # 允许的前缀列表
+   PREFIXES="feat|fix|docs|style|refactor|chore|perf|test|ci|revert"
+
+   # 读取提交消息的第一行
+   COMMIT_MSG=$(head -n 1 "$COMMIT_MSG_FILE")
+
+   # 检查提交消息是否以允许的前缀开头
+   if ! echo "$COMMIT_MSG" | grep -qE "^($PREFIXES)"; then
+       echo "错误：提交消息必须以以下前缀之一开头：$PREFIXES" >&2
+       exit 1
+   fi
+   ```
+
+4. **确保钩子文件是可执行的：**
+
+   ```bash
+   chmod +x ~/.git-templates/hooks/commit-msg
+   ```
+
+5. **配置 Git 使用模板目录：**
+
+   ```bash
+   git config --global init.templateDir '~/.git-templates'
+   ```
+
+6. **初始化新的 Git 仓库：**
+
+   ```bash
+   git init my-new-repo
+   ```
+
 ## 自动生成 CHANGELOG
 
 使用 `conventional-changelog` 命令可以自动生成 `CHANGELOG`，要使用该命令，需要以下几个步骤：

@@ -267,6 +267,35 @@ git add .
 git cz
 ```
 
+## 使用 Git hook 强制检查提交
+
+1. 首先，进入你的 Git 仓库并创建或编辑 `.git/hooks/commit-msg` 文件：
+
+```bash
+#!/bin/bash
+
+# 提交消息文件
+COMMIT_MSG_FILE=$1
+
+# 允许的前缀列表
+PREFIXES="feat|fix|docs|style|refactor|chore|perf|test|ci|revert"
+
+# 读取提交消息的第一行
+COMMIT_MSG=$(head -n 1 "$COMMIT_MSG_FILE")
+
+# 检查提交消息是否以允许的前缀开头
+if ! echo "$COMMIT_MSG" | grep -qE "^($PREFIXES)"; then
+    echo "错误：提交消息必须以以下前缀之一开头：$PREFIXES" >&2
+    exit 1
+fi
+```
+
+2. 将这个钩子脚本设置为可执行：
+
+```bash
+chmod +x .git/hooks/commit-msg
+```
+
 ## 自动生成 CHANGELOG
 
 使用 `conventional-changelog` 命令可以自动生成 `CHANGELOG`，要使用该命令，需要以下几个步骤：

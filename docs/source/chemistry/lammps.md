@@ -590,6 +590,72 @@ compute 3 all ke/atom
 dump ID group-ID style N file args
 ```
 
+其中，`ID` 表示用户为 dump 分配的名称，`group-ID` 表示要 dump 的原子组的 ID；
+
+`style` 表示 dump 的类型，可选值为：`atom` `atom/adios` `atom/gz` `atom/zstd` `cfg` `cfg/gz` `cfg/zstd` `cfg/uef` `custom` `custom/gz` `custom/zstd` `custom/adios` `dcd` `grid` `grid/vtk` `h5md` `image` `local` `local/gz` `local/zstd` `molfile` `movie` `netcdf` `netcdf/mpiio` `vtk` `xtc` `xyz` `xyz/gz` `xyz/zstd` `yaml`
+
+`N` 表示在时间步是 N 的倍数时进行 dump；`file` 表示写入 dump 信息的文件名称；
+
+`attribute1`,`attribute2`,… 表示特定 style 的属性列表
+
+- `atom` `atom/adios` `atom/gz` `atom/zstd` `dcd` `xtc` `xyz` `xyz/gz` `xyz/zstd` 的属性值为空
+
+- `cfg` `cfg/gz` `cfg/zstd` `cfg/uef` `custom` `custom/gz` `custom/zstd` `custom/adios` `vtk` `yaml` 的可接受属性为：
+
+  - `id`：原子 ID
+  - `mol`：分子 ID
+  - `proc`：拥有原子的处理器 ID
+  - `procp1`：拥有原子的处理器 ID+1
+  - `type`：原子类型
+  - `typelabel`：原子类型标签
+  - `element`：原子元素名称，由 dump_modify 命令定义
+  - `mass`：原子质量
+  - `x,y,z`：未缩放的原子坐标
+  - `xs,ys,zs`：缩放的原子坐标
+  - `xu,yu,zu`：解包的原子坐标
+  - `xsu,ysu,zsu`：缩放的解包原子坐标
+  - `ix,iy,iz`：原子所在的盒子图像
+  - `vx,vy,vz`：原子速度
+  - `fx,fy,fz`：原子上的力
+  - `q`：原子电荷
+  - `mux,muy,muz`：原子偶极矩的方向
+  - `mu`：原子偶极矩的大小
+  - `radius,diameter`：球形粒子的半径，直径
+  - `omegax,omegay,omegaz`：球形粒子的角速度
+  - `angmomx,angmomy,angmomz`：非球形粒子的角动量
+  - `tqx,tqy,tqz`：有限大小粒子的扭矩
+  - `c_ID`：由 ID 计算的每个原子的矢量
+  - `c_ID[I]`：由 ID 计算的每个原子的数组的第 I 列，I 可以包含通配符
+  - `f_ID`：由 ID 计算的每个原子的矢量
+  - `f_ID[I]`：由 ID 计算的每个原子的数组的第 I 列，I 可以包含通配符
+  - `v_name`：由名称计算的每个原子的矢量
+  - `i_name`：自定义的名称为 name 的整数矢量
+  - `d_name`：自定义的名称为 name 的浮点矢量
+  - `i2_name[I]`：自定义的名称为 name 的整数数组的第 I 列，I 可以包含通配符
+  - `d2_name[I]`：自定义的名称为 name 的浮点数组的第 I 列，I 可以包含通配符
+
+- `local` `local/gz` `local/zstd` 的可接受属性为：
+
+  - `index`：本地值的枚举
+  - `c_ID`：由 ID 计算得到的本地向量
+  - `c_ID[I]`：由 ID 计算得到的本地数组的第 I 列，可以包含通配符
+  - `f_ID`：由 ID 计算得到的本地向量
+  - `f_ID[I]`：由 ID 计算得到的本地数组的第 I 列，可以包含通配符
+
+- `grid` `grid/vtk` 的可接受属性为：
+
+  - `gname`：由计算或修正定义的网格名称
+  - `dname`：由计算或修正定义的数据字段名称
+  - `c_ID`：由 ID 为 c_ID 的计算所计算的每网格向量
+  - `c_ID[I]`：由 ID 为 c_ID 的计算所计算的每网格数组的第 I 列，I 可以包含通配符
+  - `f_ID`：由 ID 为 f_ID 的修正所计算的每网格向量
+  - `f_ID[I]`：由 ID 为 f_ID 的修正所计算的每网格数组的第 I 列，I 可以包含通配符
+
+- `h5md` 的可接受属性详见 `dump h5md` 命令
+- `image` `movie` 的可接受属性详见 `dump image` 命令
+- `molfile` 的可接受属性详见 `dump molfile` 命令
+- `netcdf` `netcdf/mpiio` 的可接受属性详见 `dump netcdf` 命令
+
 #### 示例
 
 ```bash
@@ -689,7 +755,7 @@ dump 1 all xtc 1000 file.xtc
 
   - xu,yu,zu 表示展开的原子坐标（盒子外的原子不会自动周期性到盒子内）
 
-  - xsu,ysu,zsu 表示缩放展开的原子坐标 
+  - xsu,ysu,zsu 表示缩放展开的原子坐标
 
   - fx,fy,fz 表示原子受力
 

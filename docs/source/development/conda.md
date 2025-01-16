@@ -8,6 +8,12 @@
 conda remove -n env_name --all
 ```
 
+- 重命名环境
+
+```bash
+conda rename -n old_env new_env
+```
+
 ## Bug 一览
 
 - 执行命令时显示 "DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443"

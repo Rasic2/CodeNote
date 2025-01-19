@@ -14,6 +14,15 @@ conda remove -n env_name --all
 conda rename -n old_env new_env
 ```
 
+## Conda 包制作相关
+
+- 预览 package 元信息
+
+```bash
+conda-render meta.yaml
+version=0.1.6.alpha conda-render meta.yaml  # 传递环境变量
+```
+
 ## Bug 一览
 
 - 执行命令时显示 "DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): repo.anaconda.com:443"

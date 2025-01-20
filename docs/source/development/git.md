@@ -273,7 +273,9 @@ git add .
 git cz
 ```
 
-## 使用 Git hook 强制检查提交
+## Git hook 相关
+
+### 强制检查提交
 
 1. 首先，进入你的 Git 仓库并创建或编辑 `.git/hooks/commit-msg` 文件：
 
@@ -300,6 +302,39 @@ fi
 
 ```bash
 chmod +x .git/hooks/commit-msg
+```
+
+### Commit 前操作
+
+1. 创建 `.git/hooks/commit-msg` 文件：
+
+```bash
+#!/bin/bash
+
+# 获取当前分支名称
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# 获取远程分支的最新更新
+git fetch origin $current_branch
+
+# 比较本地和远程分支
+local_commit=$(git rev-parse $current_branch)
+remote_commit=$(git rev-parse origin/$current_branch)
+
+if [ "$local_commit" != "$remote_commit" ]; then
+   echo "Your local branch is not up to date with origin/$current_branch."
+   echo "Please pull the latest changes before committing."
+   exit 1
+fi
+
+# 如果一致，则允许提交
+exit 0
+```
+
+2. 将这个钩子脚本设置为可执行：
+
+```bash
+chmod +x .git/hooks/pre-commit
 ```
 
 ## 使用 Git 模版来初始化 hook 钩子
@@ -357,6 +392,8 @@ chmod +x .git/hooks/commit-msg
 
 ## 自动生成 CHANGELOG
 
+### conventional-changelog
+
 使用 `conventional-changelog` 命令可以自动生成 `CHANGELOG`，要使用该命令，需要以下几个步骤：
 
 1. 安装或者更新 `nodejs` 和 `npm`（Ubuntu 系统默认 `apt` 安装的版本较低，需要使用 `n` 升级到较高的版本）
@@ -382,6 +419,21 @@ npm install -g conventional-changelog-cli
 ```bash
 touch CHANGELOG.md  # 首次需手动创建
 npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+```
+
+### github_changelog_generator
+
+1. 安装 `Ruby` 和 `github_changelog_generator`
+
+```bash
+brew install ruby
+gem install github_changelog_generator
+```
+
+2. 生成 `CHANGELOG.md`
+
+```bash
+github_changelog_generator -u github_project_namespace -p github_project
 ```
 
 ## Git 删除大文件历史

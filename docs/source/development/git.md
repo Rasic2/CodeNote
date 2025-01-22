@@ -128,6 +128,12 @@ git branch -d branch_name
 git push origin --delete branch_name
 ```
 
+- 同步远程分支
+
+```bash
+git fetch --prune  # 当远程仓库上已经删除了某个分支，但本地的 `git branch -r` 仍然显示该分支
+```
+
 - 重命名分支
 
 ```bash

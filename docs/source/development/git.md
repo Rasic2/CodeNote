@@ -147,6 +147,12 @@ git merge branch_name
 git rebase branch_name  # 变基
 ```
 
+- 撤销操作
+
+```bash
+git revert -n OLDER_COMMIT^...NEWER_COMMIT  # 撤销从 OLDER_COMMIT 到 NEWER_COMMIT 的所有 COMMIT，并且保存为一次 COMMIT
+```
+
 ### tag 相关
 
 - 查看已有的 tag

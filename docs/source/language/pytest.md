@@ -77,3 +77,9 @@ class TestSubmitMag(object):
         task = OptTask()
         task.generate(vdw=True, sol=True, mag=True, low=True)
 ```
+
+### 单文件测试
+
+```bash
+pytest test_example.py
+```

@@ -156,6 +156,14 @@ strace -t CMD
 find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate
 ```
 
+### grep 命令
+
+- 精确查找 torch 或 tensorflow
+
+```bash
+grep -wE "torch|tensorflow" xxx
+```
+
 ## LOGO 制作
 
 ### figlet 命令

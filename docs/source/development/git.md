@@ -255,6 +255,12 @@ git reset --mixed commit_id # 移动HEAD指针，并把版本差异放进工作�
 git reset  # 默认 mixed 模式
 ```
 
+- 比较两个分支的差异
+
+```bash
+git diff zyguo..main
+```
+
 ## 规范 Git 提交说明
 
 使用 `git cz` 命令可以自动生成规范的 Git 提交，要使用该命令，需要以下几个步骤：

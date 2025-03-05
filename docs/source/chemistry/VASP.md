@@ -89,3 +89,7 @@ NBANDS 决定计算中的 KS 或 QP 轨道数目。
 - projection.exe 报 `INFO on exit of ZHEEV 1303` 错误
 
 解决办法：最后面的数是第 n 条能带开始无法计算本征值，设置 `NBANDS` 重新计算 wavefunctions.dat 可解决
+
+- WARNING: Sub-Space-Matrix is not hermitian in DAV
+
+解决办法：去掉 INCAR 中的 NCORE 参数

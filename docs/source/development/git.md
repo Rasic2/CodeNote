@@ -261,6 +261,12 @@ git reset  # 默认 mixed 模式
 git diff zyguo..main
 ```
 
+- 比较某文件在两次提交中的差异
+
+```bash
+git diff abc123 def456 -- app.py
+```
+
 ## 规范 Git 提交说明
 
 使用 `git cz` 命令可以自动生成规范的 Git 提交，要使用该命令，需要以下几个步骤：

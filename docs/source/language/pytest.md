@@ -83,3 +83,9 @@ class TestSubmitMag(object):
 ```bash
 pytest test_example.py
 ```
+
+### 单文件单函数测试
+
+```bash
+pytest -v file::class::func
+```

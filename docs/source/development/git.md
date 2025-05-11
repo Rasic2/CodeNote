@@ -60,14 +60,6 @@ git commit -m "comment"
 
 其中 `comment` 表示对本次版本更新的标注。
 
-- 显示历史日志
-
-```bash
-git log
-git log --stat    # 查看所有提交记录的修改文件信息
-git log -p file   # 查看某个文件的修改历史
-```
-
 - 修改 commit 的最后一条注释
 
 ```bash
@@ -194,6 +186,23 @@ git fetch origin --tags
 
 ### 历史相关
 
+- 比较差异
+
+```bash
+git diff zyguo..main # 比较两个分支的差异
+git diff abc123 def456 -- app.py # 比较某文件在两次提交中的差异
+```
+
+- 显示历史日志
+
+```bash
+git log
+git log --stat    # 查看所有提交记录的修改文件信息
+git log -p file   # 查看某个文件的修改历史
+git log COMMIT1..COMMIT2 -- file # 查看某个文件从 COMMIT1 到COMMIT2 所有的修改情况（概略信息）
+git log COMMIT1..COMMIT2 -p file # 查看某个文件从 COMMIT1 到COMMIT2 所有的修改情况（详细信息）
+```
+
 - 合并分支（变基）
 
 ```bash
@@ -253,18 +262,6 @@ git reset --hard commit_id  # 移动HEAD指针，并清空工作区和暂存区�
 git reset --soft commit_id  # 移动HEAD指针，并把版本差异放进暂存区
 git reset --mixed commit_id # 移动HEAD指针，并把版本差异放进工作区
 git reset  # 默认 mixed 模式
-```
-
-- 比较两个分支的差异
-
-```bash
-git diff zyguo..main
-```
-
-- 比较某文件在两次提交中的差异
-
-```bash
-git diff abc123 def456 -- app.py
 ```
 
 ## 规范 Git 提交说明

@@ -2,6 +2,17 @@
 
 [LAMMPS](https://www.lammps.org/) 作为一个经典的分子动力学程序，可以模拟液体中的粒子，固体和气体的系综，也可以采用不同的力场和边界条件来模拟全原子，聚合物，生物，金属，粒状和粗料化体系；其可以计算的体系小至几个粒子，大到上百万甚至是上亿个粒子。
 
+## 编译
+
+- 编译 MANYBODY 包
+
+```bash
+tar -zxvf lammps-stable.tar.gz
+cd src
+make yes-MANYBODY
+make serial # serial 或者 mpi
+```
+
 ## 输入参数文件
 
 LAMMPS 的输入参数文件其实是通过一系列命令来定义的，下面将对一些常用的命令进行介绍。

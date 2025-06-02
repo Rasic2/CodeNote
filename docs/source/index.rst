@@ -14,4 +14,5 @@
    math.md
    chemistry.rst
    paper.rst
+   game.rst
    others.rst

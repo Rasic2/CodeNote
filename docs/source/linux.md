@@ -164,6 +164,20 @@ find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 fi
 grep -wE "torch|tensorflow" xxx
 ```
 
+### tmux 命令
+
+- 连接（重新附加）到已存在的 tmux 会话
+
+```bash
+tmux attach -t 0
+```
+
+- 分离会话
+
+```bash
+先按 Ctrl+B，然后按 D（大写 D 或小写 d 均可）。
+```
+
 ## LOGO 制作
 
 ### figlet 命令

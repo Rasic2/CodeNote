@@ -198,35 +198,41 @@ if [ ! -d "/opt/dst-server/dontstarve-config/clusters/$cluster" ]; then
     exit -1
 fi
 
-shard=$2
-if [[ "$shard" == "Master" ]]; then
-    echo "启动地面服务器"
-elif [[ "$shard" == "Caves" ]]; then
-    echo "启动洞穴服务器"
-else
-    echo "输入只能是Master或者Caves"
-    exit -1
-fi
+# Update dontstarve
+/opt/dst-server/steamcmd.sh +force_install_dir /opt/dst-server/dontstarve +login anonymous +app_update 343050 validate +quit
 
-cd "$game_home"/bin
-run_command=(./dontstarve_dedicated_server_nullrenderer)
-run_command+=(-console)
-run_command+=(-persistent_storage_root "$game_config_dir")
-run_command+=(-conf_dir clusters)
-run_command+=(-cluster "$cluster")
-run_command+=(-shard "$shard")
+# 定义要启动的shard列表
+shards=("Master" "Caves")
 
-mkdir -p "$game_log_path"
-time=`date +"%Y%m%d_%H%M%S"`
-"${run_command[@]}" >"$game_log_path"/log_${time}_$shard.log 2>&1 &
+# 遍历并启动每个shard
+for shard in "${shards[@]}"; do
+    if [[ "$shard" == "Master" ]]; then
+        echo "启动地面服务器"
+    elif [[ "$shard" == "Caves" ]]; then
+        echo "启动洞穴服务器"
+    fi
+
+    cd "$game_home"/bin
+    run_command=(./dontstarve_dedicated_server_nullrenderer)
+    run_command+=(-console)
+    run_command+=(-persistent_storage_root "$game_config_dir")
+    run_command+=(-conf_dir clusters)
+    run_command+=(-cluster "$cluster")
+    run_command+=(-shard "$shard")
+
+    mkdir -p "$game_log_path"
+    time=`date +"%Y%m%d_%H%M%S"`
+    "${run_command[@]}" >"$game_log_path"/log_${time}_$shard.log 2>&1 &
+done
+
+echo "已启动地面和洞穴服务器"
 ```
 
 - 启动服务器
 
 ```bash
 chmod +x run_server.sh
-./run_server.sh {存档名字} Master # 启动地面
-./run_server.sh {存档名字} Caves # 启动洞穴
+./run_server.sh {存档名字}
 ```
 
 ### 10. 停止服务器

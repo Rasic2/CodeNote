@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'OnlineNote'
-copyright = '2022-2023, Hui Zhou'
+copyright = '2022-2025, Hui Zhou'
 author = 'Hui Zhou'
 
 # The full version, including alpha/beta/rc tags

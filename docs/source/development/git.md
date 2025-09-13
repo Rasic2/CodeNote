@@ -227,6 +227,7 @@ git log --stat    # 查看所有提交记录的修改文件信息
 git log -p file   # 查看某个文件的修改历史
 git log COMMIT1..COMMIT2 -- file # 查看某个文件从 COMMIT1 到COMMIT2 所有的修改情况（概略信息）
 git log COMMIT1..COMMIT2 -p file # 查看某个文件从 COMMIT1 到COMMIT2 所有的修改情况（详细信息）
+git log -n 4 --pretty=format:"%s" # 查看最近4条提交记录并只显示提交信息
 ```
 
 - 合并分支（变基）
@@ -555,10 +556,11 @@ oco config set OCO_AI_PROVIDER='azure' OCO_MODEL='gpt-4o'
 oco config set OCO_API_KEY=xxx
 ```
 
-3. 【可选】关闭自动 push
+3. 【可选配置】
 
 ```bash
-oco config set OCO_GITPUSH=false
+oco config set OCO_GITPUSH=false # 关闭自动 push
+oco config set OCO_ONE_LINE_COMMIT=true # 单行 commit
 ```
 
 4. 使用 oco 命令生成 commit

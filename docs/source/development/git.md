@@ -192,7 +192,7 @@ git fetch origin --tags
   2.  对于每一个冲突文件，使用 --theirs 选项来检出 main 的版本。
       :::{note}
 
-      - 在合并操作中，--theirs 代表要合并进来的分支（即 dev/matmaster）的版本。
+      - 在合并操作中，--theirs 代表要合并进来的分支（即 main）的版本。
       - --ours 代表当前所在的分支（即 test）的版本。
 
       :::
@@ -333,7 +333,7 @@ git cz
 COMMIT_MSG_FILE=$1
 
 # 允许的前缀列表
-PREFIXES="feat|fix|docs|style|refactor|chore|perf|test|ci|revert"
+PREFIXES="feat|fix|docs|style|refactor|build|chore|perf|test|ci|revert"
 
 # 读取提交消息的第一行
 COMMIT_MSG=$(head -n 1 "$COMMIT_MSG_FILE")
@@ -353,7 +353,7 @@ chmod +x .git/hooks/commit-msg
 
 ### Commit 前操作
 
-1. 创建 `.git/hooks/commit-msg` 文件：
+1. 创建 `.git/hooks/pre-commit` 文件：
 
 ```bash
 #!/bin/bash
@@ -382,6 +382,30 @@ exit 0
 
 ```bash
 chmod +x .git/hooks/pre-commit
+```
+
+### 本地保护 main 或 master 分支
+
+1. 创建 `.git/hooks/pre-push`
+
+```bash
+#!/bin/bash
+
+protected_branches=("main" "master")
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+if [[ " ${protected_branches[@]} " =~ " ${current_branch} " ]]; then
+  echo "ERROR: You are not allowed to push directly to the $current_branch branch. Use a feature branch and create a Pull Request."
+  exit 1
+fi
+
+exit 0
+```
+
+2. 将这个钩子脚本设置为可执行：
+
+```bash
+chmod +x .git/hooks/pre-push
 ```
 
 ## 使用 Git 模版来初始化 hook 钩子

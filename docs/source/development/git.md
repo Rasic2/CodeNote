@@ -562,6 +562,7 @@ oco config set OCO_API_KEY=xxx
 oco config set OCO_GITPUSH=false # 关闭自动 push
 oco config set OCO_ONE_LINE_COMMIT=true # 单行 commit
  oco config set OCO_OMIT_SCOPE=true # 省略 scope
+ oco config set OCO_TOKENS_MAX_INPUT=40960 # 修改输入最大 Token 数
 ```
 
 4. 使用 oco 命令生成 commit

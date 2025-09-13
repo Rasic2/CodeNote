@@ -514,6 +514,30 @@ git filter-repo --path foo.zip --invert-paths
 
 该命令表示将 `foo.zip` 从 git 历史中移除。
 
+## 使用 opencommit 自动生成 commit
+
+1. 使用 npm 安装 [opencommit](https://github.com/di-sukharev/opencommit):
+
+```bash
+nvm use 18
+npm install -g opencommit
+```
+
+2. 配置 OPENAI
+
+```bash
+oco config set OCO_API_URL=https://xxxx.openai.azure.com
+oco config set OCO_AI_PROVIDER='azure' OCO_MODEL='gpt-4o'
+oco config set OCO_API_KEY=xxx
+```
+
+3. 使用 oco 命令生成 commit
+
+```bash
+git add .
+oco
+```
+
 ## 更多参考资源
 
 [1. 常用 Git 命令总结](https://zhuanlan.zhihu.com/p/384819351)

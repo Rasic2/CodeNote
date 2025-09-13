@@ -23,4 +23,4 @@ This `OnlineNote` is a notebook mainly record the knowledge, problem and solutio
 - Computational Chemistry
 - Others
 
-Copyright © 2022-2023 `Hui Zhou` All rights reserved.
+Copyright © 2022-2025 `Hui Zhou` All rights reserved.

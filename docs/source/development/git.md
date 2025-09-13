@@ -184,6 +184,32 @@ git push origin --tags
 git fetch origin --tags
 ```
 
+### 冲突相关
+
+- 对于冲突的文件，使用合并进来的分支（如 `main`）覆盖当前分支（如`test`）
+
+  1.  确保你正处于合并冲突的状态中，并且当前分支是 test。
+  2.  对于每一个冲突文件，使用 --theirs 选项来检出 main 的版本。
+      :::{note}
+
+      - 在合并操作中，--theirs 代表要合并进来的分支（即 dev/matmaster）的版本。
+      - --ours 代表当前所在的分支（即 test）的版本。
+
+      :::
+
+  ```bash
+  git checkout --theirs -- path/to/conflicted_file1.js
+  git checkout --theirs -- path/to/conflicted_file2.css
+  git checkout --theirs -- path/to/conflicted_file3.html
+  ```
+
+  3. 提交版本
+
+  ```bash
+  git add .
+  git commit
+  ```
+
 ### 历史相关
 
 - 比较差异

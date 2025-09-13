@@ -555,7 +555,13 @@ oco config set OCO_AI_PROVIDER='azure' OCO_MODEL='gpt-4o'
 oco config set OCO_API_KEY=xxx
 ```
 
-3. 使用 oco 命令生成 commit
+3. 【可选】关闭自动 push
+
+```bash
+oco config set OCO_GITPUSH=false
+```
+
+4. 使用 oco 命令生成 commit
 
 ```bash
 git add .

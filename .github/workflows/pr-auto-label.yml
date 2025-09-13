@@ -30,7 +30,7 @@ jobs:
               'feat': 'feature',
               'feature': 'feature',
               'improvement': 'enhancement',
-              'doc': 'documentation',
+              'docs': 'documentation',
               'readme': 'documentation',
               'chore': 'chore',
               'bump': 'dependencies',

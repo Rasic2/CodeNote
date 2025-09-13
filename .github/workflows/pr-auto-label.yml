@@ -1,4 +1,4 @@
-name: 'Auto Label by Title'
+name: "Auto Label by Title"
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     # 添加权限配置
     permissions:
-      issues: write  # 或者 contents: write
+      issues: write # 或者 contents: write
       pull-requests: write
     steps:
       - name: Label PR based on title keywords
@@ -37,13 +37,20 @@ jobs:
               'dependabot': 'dependencies',
               'upgrade': 'dependencies',
               'security': 'security',
-              'ci':'ci'
+              'ci': 'ci'
             };
 
-            // 检查标题是否包含关键词
-            for (const [keyword, label] of Object.entries(keywordMap)) {
-              if (title.includes(keyword)) {
-                labelsToAdd.add(label);
+            // 提取标题的第一个单词（冒号前的部分）
+            const firstPart = title.split(':')[0].trim();
+            const words = firstPart.split(/\s+/); // 分割成单词数组
+
+            // 检查第一个单词或前缀是否匹配关键词
+            for (const word of words) {
+              const normalizedWord = word.toLowerCase().replace(/^[\W_]+|[\W_]+$/g, '');
+              
+              if (keywordMap.hasOwnProperty(normalizedWord)) {
+                labelsToAdd.add(keywordMap[normalizedWord]);
+                break; // 找到第一个匹配就停止
               }
             }
 

@@ -31,26 +31,26 @@ release = 'latest'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc', 
-    'sphinx.ext.viewcode', 
-    'myst_parser', 
+    'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode',
+    'myst_parser',
     'sphinxcontrib.inkscapeconverter',
     'sphinxcontrib.jquery']
 
 myst_enable_extensions = [
-    "amsmath",
-    "colon_fence",
-    "deflist",
-    "dollarmath",
-    "fieldlist",
-    "html_admonition",
-    "html_image",
-    "linkify",
-    "replacements",
-    "smartquotes",
-    "strikethrough",
-    "substitution",
-    "tasklist",
+    'amsmath',
+    'colon_fence',
+    'deflist',
+    'dollarmath',
+    'fieldlist',
+    'html_admonition',
+    'html_image',
+    'linkify',
+    'replacements',
+    'smartquotes',
+    'strikethrough',
+    'substitution',
+    'tasklist',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

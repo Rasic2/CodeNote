@@ -14,12 +14,12 @@ The conda tool can modify its original mirrors by modify the :file:`~/.condrc`, 
     - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
     - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
 
-Pip Mirror 
+Pip Mirror
 -----------
 
 The pip tool can modify its original mirrors by add a :file:`~/.pip/pip.conf`, for example:
 
 .. code-block:: bash
-    
+
     [global]
     index-url = https://mirrors.aliyun.com/pypi/simple

@@ -25,13 +25,13 @@ pip install bumpversion
 [bumpversion]
 current_version = 0.1.4
 parse = (?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)(\.(?P<release>.*))?
-serialize = 
+serialize =
 	{major}.{minor}.{patch}.{release}
 	{major}.{minor}.{patch}
 
 [bumpversion:part:release]
 optional_value = gamma
-values = 
+values =
 	alpha
 	beta
 	gamma

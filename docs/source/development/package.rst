@@ -221,4 +221,4 @@ Install package can do this:
 
     conda install package
 
-重新安装同版本的包时，加入参数 :code:`--force-reinstall` 
+重新安装同版本的包时，加入参数 :code:`--force-reinstall`

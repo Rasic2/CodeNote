@@ -32,8 +32,8 @@ $$
 M &= e^{\tilde{w}θ} \\
   &= I + \tilde{w}sinθ+\tilde{w}^2(1-cosθ) \\
   &= \begin{bmatrix}
-      cosθ+w_x^2(1-cosθ) & w_xw_y(1-cosθ)-w_zsinθ & w_ysinθ+w_xw_z(1-cosθ) \\ 
-      w_zsinθ+w_xw_y(1-cosθ) & cosθ+w_y^2(1-cosθ) & w_yw_z(1-cosθ)-w_xsinθ \\ 
+      cosθ+w_x^2(1-cosθ) & w_xw_y(1-cosθ)-w_zsinθ & w_ysinθ+w_xw_z(1-cosθ) \\
+      w_zsinθ+w_xw_y(1-cosθ) & cosθ+w_y^2(1-cosθ) & w_yw_z(1-cosθ)-w_xsinθ \\
       w_xw_z(1-cosθ)-w_ysinθ & w_xsinθ+w_yw_z(1-cosθ) & cosθ+w_z^2(1-cosθ)
      \end{bmatrix}
 \end{aligned}

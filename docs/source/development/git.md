@@ -393,12 +393,36 @@ chmod +x .git/hooks/pre-commit
 ```bash
 #!/bin/bash
 
-protected_branches=("main" "master")
-current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+protected_branch="main"
+current_branch=$(git symbolic-ref HEAD 2>/dev/null | sed -e 's,.*/\(.*\),\1,')
 
-if [[ " ${protected_branches[@]} " =~ " ${current_branch} " ]]; then
-  echo "ERROR: You are not allowed to push directly to the $current_branch branch. Use a feature branch and create a Pull Request."
-  exit 1
+# 如果没有当前分支（比如在 detached HEAD 状态），直接退出
+if [ -z "$current_branch" ]; then
+    exit 0
+fi
+
+# 检查是否是推送到受保护分支
+if [ "$current_branch" = "$protected_branch" ]; then
+    # 获取推送的引用（分支或标签）
+    while read local_ref local_sha remote_ref remote_sha
+    do
+        # 如果是标签推送，允许
+        if [[ "$remote_ref" == refs/tags/* ]]; then
+            continue
+        fi
+
+        # 如果是删除分支操作，允许
+        if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+            continue
+        fi
+
+        # 如果是推送到受保护分支的提交，拒绝
+        if [ "$remote_ref" = "refs/heads/$protected_branch" ]; then
+            echo "ERROR: You are not allowed to push commits directly to the $protected_branch branch."
+            echo "Use a feature branch and create a Pull Request."
+            exit 1
+        fi
+    done
 fi
 
 exit 0
